@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Server / local config
+.env
+
+# Logs
+*.log
+
+# Cache / temp
+cache/
+tmp/
+
+# Dependency folders (if any)
+vendor/
+
+# Uploaded files (if dynamic uploads exist)
+uploads/

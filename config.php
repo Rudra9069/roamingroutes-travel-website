@@ -1,0 +1,6 @@
+<?php
+
+$RAZORPAY_KEY_ID = "rzp_test_qYgM6sOFZFS3Qs";
+$RAZORPAY_KEY_SECRET = "7C5r7u798RxpiXNTMgXLTx8V";
+
+?>
