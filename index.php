@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include('database/traveldb.php');
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
@@ -9,7 +10,7 @@ if (!empty($search))
 } 
 else 
     {
-    $query = "SELECT * FROM destinations WHERE ratings = 'top'";
+    $query = "SELECT * FROM destinations WHERE reviews = 'top'";
 }
 
 $result = mysqli_query($conn, $query); 
@@ -56,7 +57,7 @@ $result = mysqli_query($conn, $query);
 
     .welcome-user {
         position: absolute;
-        top: 2%;
+        top: 15%;
         left: 1%;
         transform: none;
         color: #ffffffe4;
@@ -81,7 +82,7 @@ $result = mysqli_query($conn, $query);
         position: absolute;
         top: 46.5%;
         left: 0%;
-        animation: fly 1.7s steps(1000, end) forwards;
+        animation: fly 1.8s steps(1000, end) forwards;
         color: rgba(255, 255, 255, 0.9);
         font-size: 40px;
     }
@@ -99,7 +100,7 @@ $result = mysqli_query($conn, $query);
 
     @keyframes fly {
         from {
-            left: 40%;
+            left: 38%;
         }
 
         to {
@@ -130,7 +131,7 @@ $result = mysqli_query($conn, $query);
         margin-left: 80%;
         top: -20px;
         height: 35px;
-        border: 1px solid rgba(37, 37, 37, 0.39);
+        border: 1px solid rgba(37, 37, 37, 0.22);
         border-radius: 20px;
         outline: none;
         background-color: white;
@@ -146,7 +147,7 @@ $result = mysqli_query($conn, $query);
     }
 
     .dest-btn:hover {
-        background-color: rgba(169, 169, 169, 0.28);
+        background-color: rgba(222, 222, 222, 0.33);
         box-shadow: 0px 0px 5px 0px rgba(169, 169, 169, 0.28);
     }
 
@@ -180,14 +181,14 @@ $result = mysqli_query($conn, $query);
     .main-places {
         display: flex;
         flex-wrap: wrap;
-        gap: 50px;
+        gap: 30px;
         justify-content: center;
         padding: 20px;
     }
 
     .card {
         position: relative;
-        width: 450px;
+        width: 460px;
         height: 300px;
         background-color: #f2f2f2;
         border-radius: 8px;
@@ -202,7 +203,7 @@ $result = mysqli_query($conn, $query);
         left: 50%;
         transform: translate(-50%, -50%);
         color: rgba(241, 237, 237, 0.87);
-        font-size: 48px;
+        font-size: 45px;
         font-weight: bold;
         z-index: 2;
         font-family: 'Poppins', sans-serif;
@@ -256,11 +257,9 @@ $result = mysqli_query($conn, $query);
 
     .sec4-h2 {
         position: relative;
-        /* margin-top: 5%; */
         top: 15%;
         margin-left: 2%;
         color: white;
-        /* font-family: 'Montserrat', sans-serif; */
         font-family: 'Poppins';
         font-size: 55px;
         font-weight: 600;
@@ -288,7 +287,8 @@ $result = mysqli_query($conn, $query);
 
     .gallery-item {
         position: relative;
-        width: 253.5px;
+        max-width: 253px;
+        width: 100%;
         height: 315px;
         flex-shrink: 0;
     }
@@ -305,7 +305,7 @@ $result = mysqli_query($conn, $query);
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.27);
+        background-color: rgba(0, 0, 0, 0.43);
         transition: 0.7s;
     }
 
@@ -601,21 +601,13 @@ $result = mysqli_query($conn, $query);
 </style>
 <body>
 
-    <!-- search bar -->
-    <div id="searchContainer" class="search-container hidden">
-        <form action="destinations.php" method="get">
-            <input type="text" placeholder="Search for destinations" name="search">
-            <button class="i-btn" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
 
     <!-- Section-1 -->
     <section class="sec1">
         <img class="main-img" src="img/main-bg_2.jpg" alt="bg-img">
         <?php if (!empty($_SESSION['name'])): ?>
             <div class="welcome-user"> Welcome, <?= htmlspecialchars($_SESSION['name']) ?> </div>
-        <?php else: ?>
-            <div class="welcome-user"> Welcome, Guest </div>
+
         <?php endif; ?>
         <div class="overlay-text typing-effect"> Explore the World! </div>
         <div class="typing-wrapper"> <i class="fas fa-plane plane-icon"></i> </div>

@@ -38,13 +38,13 @@ if ($result->num_rows === 1) {
 }
 
 body {
-    background: #f4f6fb;
+    background: #040d22ff;
     font-family: 'Poppins', sans-serif;
 }
 
 .profile-wrapper {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 100px 10px 50px 90px;
     background: var(--bg-card);
     border-radius: 16px;
     display: grid;
@@ -162,7 +162,7 @@ body {
             <h4>Change Password</h4>
             <span>Update your account password regularly to keep your account secure.</span>
             <div class="setting-actions">
-                <a href="#">Change Password</a>
+                <a href="change_password.php">Change Password</a>
             </div>
         </div>
 
@@ -171,7 +171,7 @@ body {
             <h4>Forgot Password</h4>
             <span>Reset your password if you are unable to remember your current one.</span>
             <div class="setting-actions">
-                <a href="#">Reset Password</a>
+                <a href="forgot_password.php">Reset Password</a>
             </div>
         </div>
 

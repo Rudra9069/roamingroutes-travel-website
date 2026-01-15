@@ -91,7 +91,7 @@ if(isset($_POST['login']))
         padding: 0;
     }
 
-    img {
+    .auth-wrapper img {
         display: flex;
         margin: auto;
         width: 100%;
@@ -104,19 +104,24 @@ if(isset($_POST['login']))
 
     .card {
         position: absolute;
-        top: 40%;
-        left: 50%;
+        top: 45%;
+        left: 52%;
         transform: translate(-50%, -50%);
-        background-color: rgba(238, 238, 238, 0.75);
+        background-color: rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(15px);
         width: 600px;
-        height: 500px;
+        height: 450px;
+        border-radius: 50px;
         font-family: 'Poppins', sans-serif;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .card h1 {
         position: relative;
         top: 50px;
         font-size: 36px;
+        color: white;
         text-align: center;
     }
 
@@ -134,7 +139,7 @@ if(isset($_POST['login']))
         background-color: #fff;
         border: none;
         outline: none;
-        border-radius: 40px;
+        border-radius: 50px;
         font-size: 17px;
         padding: 20px 15px 20px 45px;
     }
@@ -153,27 +158,6 @@ if(isset($_POST['login']))
 
     }
 
-    .card .radio {
-        position: relative;
-        top: 60px;
-        text-align: left;
-        height: 2px;
-        accent-color: #D2B68A;
-        margin: 0px 110px;
-    }
-
-    .dob {
-        position: relative;
-        top: 30px;
-        width: 400px;
-        height: 40px;
-        border-radius: 40px;
-        margin: -10px 30px;
-        padding: 20px 20px 20px 40px;
-        border: none;
-        outline: none;
-    }
-
     .card .btn {
         position: relative;
         top: 100px;
@@ -183,13 +167,14 @@ if(isset($_POST['login']))
         color: black;
         border: none;
         outline: none;
-        border-radius: 40px;
+        border-radius: 50px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .1);
         cursor: pointer;
         font-size: 16px;
         color: #333;
         font-weight: 600;
         margin: 10px 250px;
+        transition: all 0.4s ease-in;
     }
 
     .card .btn:hover {
@@ -200,13 +185,18 @@ if(isset($_POST['login']))
     .card .register-link {
         position: relative;
         color: black;
-        top: 120px;
-        font-size: 17px;
+        top: 44%;
+        font-size: 19px;
         text-align: center;
     }
 
+    .register-link p{
+        position: relative; 
+        margin-top: 5%;
+        color: white;
+    }
     .register-link p a {
-        color: rgb(36, 49, 188);
+        color: rgba(7, 201, 226, 1);
         text-decoration: none;
         font-weight: 600;
     }
@@ -219,7 +209,7 @@ if(isset($_POST['login']))
 
 <body>
     <div class="auth-wrapper">
-        <img alt="img" src="img/login.jpg">
+        <img alt="img" src="img/login_2.jpg">
         <div class="card">
             <h1> Login | Sign-In </h1>
             <form onsubmit="return validation()" action="login.php"  method="post">

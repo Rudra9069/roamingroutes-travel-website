@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     .image-container {
         position: relative;
         width: 100%;
-        height: 680px;
+        height: 750px;
         overflow: hidden;
     }
 
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     .card {
         position: absolute;
-        top: 3%;
+        top: 12%;
         left: 65%;
         background-color: white;
         color: black;
@@ -228,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     .card3 {
         position: relative;
         height: 200px;
-        width: 450px;
+        width: 400px;
         background-color: rgb(40, 40, 40);
         border-radius: 15px;
         border: none;
@@ -263,8 +263,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     /* Map */
     .map-container {
         position: relative;
-        margin-left: 4%;
-        max-width: 1400px;
+        left: 7%;
+        max-width: 1200px;
         box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.83);
         border-radius: 12px;
         overflow: hidden;
@@ -273,7 +273,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     iframe {
         width: 100%;
         height: 500px;
-        border: 15px solid rgba(0, 0, 0, 0.82);
+        border: 8px solid rgba(25, 25, 25, 1);
     }
 </style>
 

@@ -51,13 +51,14 @@ if (isset($_POST['update'])) {
 }
 
 body {
-    background: #f4f6fb;
+    background: #040d22ff;
     font-family: 'Poppins', sans-serif;
 }
 
 .profile-wrapper {
+    position: relative;
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 100px 10px 50px 90px;
     background: var(--bg-card);
     border-radius: 16px;
     display: grid;

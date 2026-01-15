@@ -237,10 +237,11 @@ if (isset($_POST['send']))
     .sec4-d{
         padding: 10px 0px 50px 0px;
     }
+
     .cards{
       display: flex;
       justify-content: space-between;
-      /* gap: 0px; */
+      gap: 10px;
       flex-wrap: wrap;
       margin: 20px 35px;
     }
@@ -248,11 +249,11 @@ if (isset($_POST['send']))
     .card1,.card2,.card3{
         position: relative;
         height: 300px;
-        width: 450px;
+        width: 400px;
         background-color: rgba(207, 207, 207, 0.28);
         border-radius: 15px;
         border: none;
-        box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.33);
+        box-shadow: 0px 0px 18px 2px rgba(55, 55, 55, 0.25);
     }
 
     .cards .cp-h{

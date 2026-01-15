@@ -128,166 +128,280 @@ require 'vendor/autoload.php';
     body {
         margin: 0;
         padding: 0;
-        /* background-image: url("img/login.jpg"); */
+        background-color: #0f0f12;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        overflow-x: hidden;
     }
 
     .auth-wrapper {
         position: relative;
         min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0f0f12 0%, #1a1a24 100%);
+        padding: 20px;
     }
 
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-
-    .card {
+    /* Background image with blur for depth */
+    .bg-image {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(238, 238, 238, 0.52);
-        width: 600px;
-        height: 630px;
-    }
-
-
-    .card h1 {
-        position: relative;
-        top: 50px;
-        font-size: 40px;
-        text-align: center;
-        font-family: 'Poppins';
-    }
-
-    .card .input-box {
-        position: relative;
-        top: 60px;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 25px;
-        margin: 30px 100px;
-        font-family: 'Poppins';
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.3;
+        filter: blur(8px);
+        z-index: 0;
     }
 
-    .input-box input {
-        width: 400px;
-        height: 10px;
-        background-color: #fff;
-        border: none;
-        outline: none;
-        border-radius: 40px;
-        font-size: 17px;
-        padding: 20px 15px 20px 40px;
+    .main-container {
+        position: relative;
+        margin-top: 5%;
+        margin-bottom: 3%;
+        display: flex;
+        height: 100%;
+        max-height: 700px;
+        width: 100%;
+        max-width: 1000px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        animation: containerFadeIn 0.8s ease-out;
     }
 
-    .input-box input::placeholder {
-        color: rgb(30, 29, 29);
+    @keyframes containerFadeIn {
+        0% { opacity: 0; transform: scale(0.95); }
+        100% { opacity: 1; transform: scale(1); }
     }
 
-    .input-box i {
-        color: black;
+    /* Left Image Section */
+    .image-section {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .main-container:hover .image-section img {
+        transform: scale(1.05);
+    }
+
+    .image-overlay {
         position: absolute;
-        left: 4%;
-        top: 45%;
-        transform: translate(-50%);
-        font-size: 20px;
-
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
     }
 
-    .dob {
-        position: relative;
-        top: 30px;
-        width: 400px;
-        height: 40px;
-        border-radius: 40px;
-        margin: -10px 30px;
-        padding: 20px 20px 20px 40px;
-        border: none;
-        outline: none;
-        font-family: 'Poppins';
-    }
-
-    .card .btn {
-        position: relative;
-        top: 100px;
-        width: 100px;
-        height: 45px;
-        background-color: #fff;
-        color: black;
-        border: none;
-        outline: none;
-        border-radius: 40px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-        cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        font-weight: 600;
-        margin: 10px 250px;
-        font-family: 'Poppins';
-        transition: 0.8s;
-    }
-
-    .card .btn:hover {
-        background-color: rgb(43, 42, 42);
+    .image-overlay h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 28px;
+        margin-bottom: 10px;
         color: #fff;
     }
 
-    .card .login-link {
-        position: relative;
-        color: black;
-        top: 120px;
-        font-size: 17px;
+    .image-overlay p {
+        font-size: 14px;
+        color: rgba(255,255,255,0.7);
+    }
+
+    /* Right Form Section */
+    .form-section {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .form-section h1 {
+        font-size: 32px;
+        margin-bottom: 30px;
         text-align: center;
-    }
-
-    .login-link p a {
-        color: rgb(36, 49, 188);
-        text-decoration: none;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: 600;
+        background: linear-gradient(90deg, #fff, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
-    .login-link p a:hover {
+    .input-box {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .input-box input {
+        width: 100%;
+        padding: 15px 15px 15px 45px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        font-size: 15px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .input-box input:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    }
+
+    .input-box i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 18px;
+    }
+
+    .dob-container {
+        margin-bottom: 20px;
+    }
+
+    .dob-container label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-left: 5px;
+    }
+
+    input[type="date"] {
+        width: 100%;
+        padding: 12px 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: white;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+        background: white;
+        color: black;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        background: #f0f0f0;
+        color: rgb(0,0,0);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .login-link {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .login-link a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+
+    .login-link a:hover {
         text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .main-container {
+            flex-direction: column;
+            max-width: 450px;
+        }
+        .image-section {
+            height: 200px;
+        }
     }
 </style>
 
 <body>
     <div class="auth-wrapper">
-        <img alt="img" src="img/login.jpg">
-        <div class="card">
-            <h1> Register Here </h1>
-            <form onsubmit="return validation()" action="" method="post">
-                <div class="input-box">
-                    <input type="text" id="name" name="name" placeholder="Full Name">
-                    <i class="fa-solid fa-user"></i>
+        <img class="bg-image" src="img/register.jpg" alt="background">
+        
+        <div class="main-container">
+            <!-- Left Card: Image -->
+            <div class="image-section">
+                <img src="img/register.jpg" alt="Register">
+                <div class="image-overlay">
+                    <h2>Join Roaming Routes</h2>
+                    <p>Start your journey with us and explore the world's most beautiful destinations.</p>
                 </div>
-                <div class="input-box">
-                    <input type="text" id="email" name="email" placeholder="Email Address">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="input-box">
-                    <input type="number" id="contactno" name="contactno" placeholder="Contact Number">
-                    <i class="fa-solid fa-phone"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" id="pwd" name="pwd" placeholder="Password">
-                    <i class="fa-solid fa-lock-open"></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" id="c_pwd" name="c_pwd" placeholder="Confirm password">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div class="dob">
-                    <input type="date" class="dob" id="dob" name="dob" value="date" max="2025-04-15">
-                </div>
-                <button type="submit" class="btn" value="submit" name="signup"> Done </button>
-                <div class="login-link">
-                    <p> Already a user? <a href="login.php"> login </a> </p>
-                </div>
-            </form>
-        </div> 
+            </div>
+
+            <!-- Right Card: Form -->
+            <div class="form-section">
+                <h1> Register </h1>
+                <form onsubmit="return validation()" action="" method="post">
+                    <div class="input-box">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="text" id="contactno" name="contactno" placeholder="Contact Number" required>
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="pwd" name="pwd" placeholder="Password" required>
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-check-double"></i>
+                        <input type="password" id="c_pwd" name="c_pwd" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="dob-container">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" max="2025-04-15" required>
+                    </div>
+                    <button type="submit" class="btn" name="signup"> Create Account </button>
+                    <div class="login-link">
+                        <p> Already a member? <a href="login.php">Login</a> </p>
+                    </div>
+                </form>
+            </div> 
+        </div>
     </div>
 </body>
 

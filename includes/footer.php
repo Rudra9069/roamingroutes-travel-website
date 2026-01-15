@@ -112,12 +112,13 @@ if (isset($_POST['send']))
       <i style="color:rgba(20, 111, 168, 0.87);" class="fa-regular fa-envelope"> </i>
       <p class="cont-details"> roamingroutes33@gmail.com </p> <br>
       <i style="color: white;" class="fa-solid fa-mobile-screen-button"></i>
-      <p class="cont-details"> +91 820 021 4115 </p> <br>
+      <p class="cont-details"> +91 8200214115 </p> <br>
       <i style="color: lightcoral;" class="fa-solid fa-map-pin"></i>
-      <p class="cont-details"> G-1 Krishna Sadan, Pranami Street, <br>Moti-Chhipwad, Valsad - 396001</p>
-    </div>
+      <p class="cont-details"> G-1 Krishna Sadan, Pranami Street, Moti-Chhipwad, Valsad - 396001</p>
+    </div>  
   </div>
 </section>
+
 <!-- Footer -->
 <footer class="custom-footer">
   <div class="container">

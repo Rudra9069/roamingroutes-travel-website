@@ -1,105 +1,114 @@
-<!-- email_template.php -->
-<?php
-include('database/traveldb.php');
-
-?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Roaming Routes</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        table { border-collapse: collapse !important; }
+        body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f4f4f4; }
 
-        body{
-            margin: 0;
-            padding: 100px 400px 100px 400px;
-            display: flex;
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1a2341;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        .em-card{
-            height: 500px;
-            width: 600px;
-            background-color:rgb(26, 35, 65);
-            color:rgb(209, 173, 114);
-            font-family: 'poppins', sans-serif;
-            border: 10px solid rgb(109, 119, 150);
-            border-radius: 10px;
-            padding: 50px 0px 0px 20px;
+        .header {
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #d1ad72;
         }
-
-        .em-card .em-h1{
-            position: relative;
-            top: 5%;
-            color:rgb(209, 173, 114);
+        .content {
+            padding: 40px 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            line-height: 1.6;
         }
-
-        .em-card .em-p1{
-            position: relative;
-            top: 5%;
+        .content h1 {
+            color: #d1ad72;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .content h2 {
             font-size: 18px;
-            color: white;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
-
-        .em-card .verink{
-            position: relative;
-            top: 15%;
+        .content p {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 25px;
         }
-
-        .em-card a{
-            position: relative;
-            top: 17%;
+        .button-container {
+            text-align: center;
+            margin: 35px 0;
+        }
+        .verify-button {
+            display: inline-block;
+            background-color: #d1ad72;
+            color: #1a2341 !important;
             text-decoration: none;
-            font-size: 17px;
-            background-color: white;
-            color: black;
-            padding: 2px 10px 2px 10px;
-            border-radius: 10px;
-            transition: 0.5s;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        .em-card a:hover{
-            background-color: rgba(0, 0, 0, 0.247);
-            color: rgba(255, 255, 255, 0.678);
+        .footer {
+            padding: 20px;
+            background-color: #151b33;
+            text-align: center;
+            color: #a5a8b1;
+            font-size: 13px;
         }
-
-        .em-card .thk{ 
-            position: relative;
-            top: 25%;
-            font-size: 20px;
-            font-weight: 800;
-        }
-
-        .em-card img{
-            position: relative;
-            margin-left: 70%;
-            top: 34%;
-            width: 180px;
-        }
-
-        .verink{
-            position: relative;
-            margin-top: 3%;
-        }
-
     </style>
 </head>
 <body>
-    <div class="em-card">
-        <h2 class="em-h2"> Hello, {{name}} </h2>
-        <h1 class="em-h1">Welcome to Roaming Routes!</h1>
-        <p class="em-p1">
-            Get ready to explore amazing destinations with Roaming Routes. <br>
-            Your adventure begins now
-        </p>
-        <p class="verink">Please verify your email address to activate your account</p>
-        <a href="{{verify_link}}"> Verify your account</a>
-        <p class="thk">Thank you,<br>Roaming Routes</p>
-        <img src="img/logo/rr_logo2.png" alt="rr_logo2">
-    </div>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table class="email-container" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td class="header">
+                            <h2 style="color: #d1ad72; margin: 0; font-family: 'Cinzel', serif; letter-spacing: 3px;">ROAMING ROUTES</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content">
+                            <h2>Hello, {{name}}</h2>
+                            <h1>Welcome to the Adventure!</h1>
+                            <p>
+                                Thank you for joining Roaming Routes. Your gateway to exploring the world's most hidden gems and luxury escapes is now open. 🌍✨
+                            </p>
+                            <p>
+                                Before you start planning your next journey, please verify your email address to secure your account.
+                            </p>
+                            <div class="button-container">
+                                <a href="{{verify_link}}" class="verify-button">Verify Account</a>
+                            </div>
+                            <p style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                                Best Regards,<br>
+                                <b style="color: #d1ad72;">The Roaming Routes Team</b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="footer">
+                            <p>&copy; 2026 Roaming Routes Pvt Ltd. All rights reserved.</p>
+                            <p>Luxury Travel & Curated Experiences</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
