@@ -507,7 +507,7 @@
             <div class="container">
 
                 <!-- Title -->
-                <img class="logo" src="img/logo/rr_logo_2.png" alt="RR_logo"></img>
+                <img class="logo" src="img/logo/rr_logo_white.png" alt="RR_logo"></img>
 
                 <!-- nav bar -->
                 <ul class="nav-links">

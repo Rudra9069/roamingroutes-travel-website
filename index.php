@@ -72,7 +72,8 @@ $result = mysqli_query($conn, $query);
         overflow: hidden;
         font-family: 'Poppins';
         font-size: 55px;
-        animation: typing 5s steps(1000, end), forwards;
+        width: 0%;
+        animation: typing 3.5s steps(1000, end) 2.2s forwards;
     }
 
     .plane-icon {
@@ -81,8 +82,7 @@ $result = mysqli_query($conn, $query);
         overflow: hidden;
         position: absolute;
         top: 46.5%;
-        left: 0%;
-        animation: fly 1.8s steps(1000, end) forwards;
+        animation: fly 1.5s steps(1000, end) 1.8s forwards;
         color: rgba(255, 255, 255, 0.9);
         font-size: 40px;
     }
@@ -100,7 +100,7 @@ $result = mysqli_query($conn, $query);
 
     @keyframes fly {
         from {
-            left: 38%;
+            left: 43%;
         }
 
         to {
@@ -601,6 +601,132 @@ $result = mysqli_query($conn, $query);
 </style>
 <body>
 
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-logo-container">
+            <img src="img/logo/ss_2.png" alt="Roaming Routes" class="splash-logo-2">
+            <img src="img/logo/ss_1.png" alt="Roaming Routes" class="splash-logo-1">
+        </div>
+    </div>
+
+    <style>
+        /* Splash Screen Styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: splashFadeOut 0.5s ease-out 1.7s forwards;
+        }
+
+        .splash-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* First logo part - blur to clear */
+        .splash-logo-1 {
+            width: 400px;
+            height: auto;
+            animation: logoBlurToClear 0.8s ease-out forwards;
+        }
+
+        /* Second logo part - slide up from below */
+        .splash-logo-2 {
+            width: 300px;
+            height: auto;
+            opacity: 0;
+            animation: logoSlideUp 0.5s ease-out 0.8s forwards;
+        }
+
+        @keyframes logoBlurToClear {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+                filter: blur(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes logoSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes splashFadeOut {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .splash-hidden {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        (function() {
+            var splash = document.getElementById('splash-screen');
+            var referrer = document.referrer;
+            var currentHost = window.location.host;
+            var currentPath = window.location.pathname;
+            
+            // Detect if this is a page refresh
+            var isReload = false;
+            if (window.performance && window.performance.navigation) {
+                isReload = window.performance.navigation.type === 1;
+            } else if (window.performance && performance.getEntriesByType) {
+                var navEntries = performance.getEntriesByType('navigation');
+                if (navEntries.length > 0) {
+                    isReload = navEntries[0].type === 'reload';
+                }
+            }
+            
+            // Check if coming from a DIFFERENT page on the same site
+            var isFromOtherPage = referrer && 
+                                  referrer.indexOf(currentHost) !== -1 && 
+                                  referrer.indexOf(currentPath) === -1;
+            
+            // Show splash on: first visit, direct URL access, or refresh
+            // Hide splash on: navigation from other pages on the site
+            if (isFromOtherPage && !isReload) {
+                // Coming from another page on the site - hide splash immediately
+                if (splash) {
+                    splash.classList.add('splash-hidden');
+                }
+            } else {
+                // First visit, direct access, or refresh - show splash animation
+                setTimeout(function() {
+                    if (splash) {
+                        splash.classList.add('splash-hidden');
+                    }
+                }, 3000);
+            }
+        })();
+    </script>
 
     <!-- Section-1 -->
     <section class="sec1">
