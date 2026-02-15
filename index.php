@@ -369,6 +369,54 @@ $result = mysqli_query($conn, $query);
         font-family: 'Great Vibes', cursive;
         letter-spacing: 10px;
     }
+
+    /* Responsiveness Media Queries */
+    @media (max-width: 992px) {
+        .overlay-text { font-size: 42px; width: 95%; }
+        .typing-effect { font-size: 38px; }
+        .plane-icon { font-size: 30px; top: 48%; }
+        .sec2-h2 { font-size: 38px; }
+        .dest-btn { margin-left: auto; margin-right: 3%; top: 0; display: block; width: fit-content; }
+        .sec4-h2 { font-size: 42px; }
+        .sec4-p { margin-left: 2%; font-size: 18px; top: 8%; }
+        .h1-vid, .h1_2-vid { font-size: 50px; letter-spacing: 5px; }
+        .h1-vid { margin-left: 10%; }
+        .h1_2-vid { margin-left: 45%; }
+    }
+
+    @media (max-width: 768px) {
+        .main-img { height: 450px; }
+        .overlay-text { font-size: 32px; top: 55%; }
+        .typing-effect { font-size: 28px; }
+        .plane-icon { font-size: 22px; top: 54%; }
+        .welcome-user { font-size: 18px; top: 12%; }
+        .sec2-h2 { font-size: 32px; text-align: center; margin-left: 0; }
+        .dest-btn { margin: 20px auto 0; top: 0; }
+        .card { width: 100%; max-width: 400px; height: 250px; }
+        .sec4 { height: auto; padding-bottom: 40px; }
+        .sec4-h2 { font-size: 34px; text-align: center; }
+        .sec4-p { text-align: center; margin-left: 0; top: 10px; }
+        .gallery { top: 30px; }
+        .h1-vid, .h1_2-vid { font-size: 35px; position: relative; top: 0; margin: 20px 0; text-align: center; display: block; }
+        .overlay-video { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .h1-vid { margin-left: 0; margin-top: 50px; }
+        .h1_2-vid { margin-left: 0; }
+        
+        @keyframes fly {
+            from { left: 30%; }
+            to { left: 65%; }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .main-img { height: 400px; }
+        .overlay-text { font-size: 26px; }
+        .typing-effect { font-size: 22px; }
+        .plane-icon { font-size: 18px; }
+        .sec2-h2 { font-size: 28px; }
+        .sec4-h2 { font-size: 28px; }
+        .sec4-p { font-size: 14px; }
+    }
 </style>
 
 <!-- Popup css -->

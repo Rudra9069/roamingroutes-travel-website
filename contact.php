@@ -275,6 +275,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         height: 500px;
         border: 8px solid rgba(25, 25, 25, 1);
     }
+
+    /* Responsiveness Media Queries */
+    @media (max-width: 992px) {
+        .ch { font-size: 45px; }
+        .cp { font-size: 16px; top: 40%; }
+        .card { left: 50%; transform: translateX(-50%); top: 50%; max-height: none; height: auto; padding: 20px; }
+        .card input[type="text"], .card input[type="email"], .card input[type="number"], .card textarea, .card .c-em-btn { left: 5%; width: 90%; position: static; margin-top: 15px; }
+        .card input[type="text"] { width: 90%; display: block; }
+        .sec2-p { font-size: 38px; }
+        .card1, .card2, .card3 { width: 100%; max-width: 450px; margin: 10px auto; }
+    }
+
+    @media (max-width: 768px) {
+        .image-container { height: auto; min-height: 400px; }
+        .background-image { height: 400px; }
+        .overlay { position: static; flex-direction: column; background: #000; padding: 40px 20px; }
+        .ch { position: static; font-size: 32px; text-align: center; }
+        .cp { position: static; font-size: 15px; text-align: center; margin-top: 10px; }
+        .card { position: static; transform: none; margin: -50px auto 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .sec2-p { font-size: 30px; }
+        .map-container { left: 0; width: 100%; border-radius: 0; }
+        iframe { border: none; height: 350px; }
+    }
+
+    @media (max-width: 480px) {
+        .ch { font-size: 26px; }
+        .ch2 { font-size: 28px; }
+    }
 </style>
 
 <body>

@@ -110,6 +110,37 @@ body {
     color: var(--text-muted);
     font-size: 14px;
 }
+
+/* Responsiveness Media Queries */
+@media (max-width: 900px) {
+    .profile-wrapper {
+        grid-template-columns: 1fr;
+        margin: 80px 15px 40px 15px;
+    }
+    .profile-sidebar {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 20px;
+        scrollbar-width: none;
+    }
+    .profile-sidebar::-webkit-scrollbar { display: none; }
+    .profile-sidebar h2 { display: none; }
+    .profile-sidebar a {
+        flex-shrink: 0;
+        margin-bottom: 0;
+        padding: 8px 15px;
+        white-space: nowrap;
+    }
+    .profile-content { padding: 30px 20px; }
+}
+
+@media (max-width: 600px) {
+    .billing-card-real { flex-direction: column; }
+    .billing-card-img { width: 100%; height: 180px; }
+    .footer-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .footer-actions { width: 100%; justify-content: space-between; }
+}
 </style>
 
 <div class="profile-wrapper">

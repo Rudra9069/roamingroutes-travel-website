@@ -407,33 +407,47 @@
 
         @media (max-width: 992px) {
         .custom-navbar .container {
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row; /* Keep logo and hamburger on same row */
+            justify-content: space-between;
+            padding: 0 1rem;
         }
 
         .nav-links {
+            position: fixed;
+            top: 55px;
+            right: -100%;
+            height: calc(100vh - 55px);
+            width: 70%;
+            max-width: 300px;
+            background: rgb(26, 35, 65);
             flex-direction: column;
-            gap: 0.75rem;
-            margin-top: 10px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 40px 20px;
+            gap: 1.5rem;
+            transition: 0.4s ease-in-out;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transform: none; /* Override desktop centering */
+            left: auto;
+        }
+
+        .nav-links.show {
+            right: 0;
+        }
+
+        .nav-links li a {
+            font-size: 18px;
+            color: white;
         }
 
         .nav-btn {
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 10px;
+            display: none; /* Hide search in main navbar row on mobile */
         }
 
-        .search-container {
-            position: static;
-            transform: none;
-            margin-left: 0;
-            width: 100%;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .search-container input[type="text"] {
-            width: 90%;
+        .hamburger {
+            display: flex;
+            z-index: 1001;
         }
 
         .features, .top-destinations, .contact-us {
@@ -455,12 +469,13 @@
 
         .subs input {
             width: 100%;
+            max-width: 300px;
         }
 
         .subs .em-btn {
             margin-left: 0;
-            display: block;
-            margin: 1rem auto;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         .contact-us .contact-icons {
@@ -469,7 +484,8 @@
         }
 
         .contact-us .contact-icons .cont-details {
-            margin-left: 1rem;
+            margin-left: 10px;
+            display: inline;
         }
     }
 
@@ -510,7 +526,7 @@
                 <img class="logo" src="img/logo/rr_logo_white.png" alt="RR_logo"></img>
 
                 <!-- nav bar -->
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="index.php">HOME</a></li>
                     <li><a href="destinations.php">DESTINATIONS</a></li>
                     <li><a href="aboutus.php">ABOUT</a></li>

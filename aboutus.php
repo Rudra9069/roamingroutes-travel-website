@@ -273,6 +273,40 @@ if (isset($_POST['send']))
         padding: 10px 25px;
     }
 
+    /* Responsiveness Media Queries */
+    @media (max-width: 992px) {
+        .overlay-text { font-size: 42px; }
+        .overlay-text_2 { font-size: 24px; top: 60%; }
+        .abt-p { margin: 40px auto; font-size: 16px; }
+        .subs-h { font-size: 26px; }
+        .abt-d3 input { margin-left: 10%; top: 40px; width: 80%; }
+        .abt-d3 .em-btn { margin-left: 10%; top: 50px; }
+        .subs-p2 { margin-left: 10%; top: 60px; }
+        .sec4-p { font-size: 38px; }
+        .card1, .card2, .card3 { width: 100%; max-width: 450px; height: auto; padding-bottom: 20px; }
+    }
+
+    @media (max-width: 768px) {
+        .abt-img-wrapper, .abt-img { height: 400px; }
+        .overlay-text { font-size: 32px; top: 35%; }
+        .overlay-text_2 { font-size: 20px; top: 55%; width: 90%; }
+        .sec3 { height: auto; padding: 40px 0; }
+        .abt-d3 { left: 5%; width: 90%; top: 0; padding-bottom: 40px; }
+        .subs-h, .subs-p1 { left: 5%; text-align: center; width: 90%; }
+        .abt-d3 input { margin: 20px auto; display: block; position: static; width: 90%; }
+        .abt-d3 .em-btn { margin: 0 auto; display: block; position: static; }
+        .subs-p2 { margin: 10px auto; text-align: center; position: static; width: 90%; }
+        .sec4-p { font-size: 30px; text-align: center; margin-left: 0; }
+        .cards { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+        .abt-img-wrapper, .abt-img { height: 300px; }
+        .overlay-text { font-size: 26px; }
+        .overlay-text_2 { font-size: 16px; }
+        .sec4-p { font-size: 24px; }
+    }
+
 </style>
 
 <body>

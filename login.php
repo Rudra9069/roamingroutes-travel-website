@@ -205,6 +205,23 @@ if(isset($_POST['login']))
         text-decoration: underline;
     }
 
+    /* Responsiveness Media Queries */
+    @media (max-width: 768px) {
+        .auth-wrapper img { height: 100vh; object-fit: cover; }
+        .card { width: 90%; max-width: 450px; left: 50%; height: auto; padding: 40px 20px; border-radius: 30px; }
+        .card h1 { top: 0; font-size: 28px; margin-bottom: 30px; }
+        .card .input-box { top: 0; margin: 20px 0; width: 100%; height: auto; }
+        .input-box input { width: 100%; position: static; }
+        .input-box i { left: 40px; }
+        .card .btn { top: 10px; margin: 20px auto; display: block; }
+        .card .register-link { top: 20px; position: static; margin-top: 20px; font-size: 16px; }
+    }
+
+    @media (max-width: 480px) {
+        .card h1 { font-size: 24px; }
+        .card { padding: 30px 15px; }
+    }
+
 </style>
 
 <body>

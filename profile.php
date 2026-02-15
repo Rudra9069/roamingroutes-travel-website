@@ -147,6 +147,36 @@ body {
 .update-btn:hover {
     background: #c29a5c;
 }
+
+/* Responsiveness Media Queries */
+@media (max-width: 900px) {
+    .profile-wrapper {
+        grid-template-columns: 1fr;
+        margin: 80px 15px 40px 15px;
+    }
+    .profile-sidebar {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 20px;
+        scrollbar-width: none;
+    }
+    .profile-sidebar::-webkit-scrollbar { display: none; }
+    .profile-sidebar h2 { display: none; }
+    .profile-sidebar a {
+        flex-shrink: 0;
+        margin-bottom: 0;
+        padding: 8px 15px;
+        white-space: nowrap;
+    }
+    .profile-content { padding: 30px 20px; }
+    .form-group { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+    .profile-content h3 { font-size: 20px; }
+    .update-btn { width: 100%; border-radius: 12px; }
+}
 </style>
 
 <div class="profile-wrapper">

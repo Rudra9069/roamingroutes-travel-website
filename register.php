@@ -346,10 +346,22 @@ require 'vendor/autoload.php';
         .main-container {
             flex-direction: column;
             max-width: 450px;
+            max-height: none; /* Allow form to expand */
+            border-radius: 20px;
         }
         .image-section {
-            height: 200px;
+            height: 180px;
         }
+        .form-section {
+            padding: 30px 20px;
+        }
+        .form-section h1 { font-size: 28px; margin-bottom: 20px; }
+    }
+
+    @media (max-width: 480px) {
+        .main-container { width: 100%; }
+        .form-section { padding: 25px 15px; }
+        .form-section h1 { font-size: 24px; }
     }
 </style>
 

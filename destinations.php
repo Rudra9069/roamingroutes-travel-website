@@ -216,6 +216,32 @@ $result = mysqli_query($conn, $query);
         font-size: 20px;
         font-weight: 500;
     }
+
+    /* Responsiveness Media Queries */
+    @media (max-width: 992px) {
+        .overlay-text { font-size: 45px; left: 50%; transform: translate(-50%, -50%); top: 50%; }
+        .dest-heading { font-size: 35px; }
+        .price { margin-left: 30%; }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translate(-50%, 50%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dest-img { height: 400px; }
+        .overlay-text { font-size: 32px; width: 90%; white-space: normal; }
+        .dest-heading { font-size: 28px; margin-top: 50px; }
+        .cards { width: 100%; max-width: 400px; height: auto; padding-bottom: 20px; }
+        .price { margin-left: 10%; margin-top: 10px; display: inline-block; }
+        .view-details { display: inline-block; }
+    }
+
+    @media (max-width: 480px) {
+        .dest-img { height: 300px; }
+        .overlay-text { font-size: 26px; }
+        .dest-heading { font-size: 24px; }
+    }
 </style>
 
 <body>
