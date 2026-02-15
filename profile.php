@@ -149,7 +149,7 @@ body {
 }
 
 /* Responsiveness Media Queries */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
     .profile-wrapper {
         grid-template-columns: 1fr;
         margin: 80px 15px 40px 15px;
