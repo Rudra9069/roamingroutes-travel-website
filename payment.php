@@ -50,6 +50,71 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['payment_id']))
             
             if ($stmt->execute()) {
                 $stmt->close();
+
+                // Send Receipt Email
+                require 'vendor/autoload.php';
+                $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+
+                try {
+                    // Fetch destination info for the email
+                    $dest_query = "SELECT name, city, state, country FROM destinations WHERE id = $id";
+                    $dest_res = mysqli_query($conn, $dest_query);
+                    $dest_info = mysqli_fetch_assoc($dest_res);
+
+                    // SMTP settings (from contact.php)
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'roamingroutes33@gmail.com';
+                    $mail->Password   = 'tsjs igis tazc vazs';
+                    $mail->SMTPSecure = 'ssl';
+                    $mail->Port       = 465;
+
+                    // Recipients
+                    $mail->setFrom('roamingroutes33@gmail.com', 'Roaming Routes');
+                    $mail->addAddress($email, $name);
+
+                    // Content
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Your Booking Confirmation - ' . $dest_info['name'];
+                    
+                    // Aesthetic body
+                    $mail->Body = "
+                    <div style='background-color: #0f172a; padding: 40px; font-family: sans-serif; color: #ffffff; max-width: 600px; margin: auto; border-radius: 20px;'>
+                        <div style='text-align: center; margin-bottom: 30px;'>
+                            <h1 style='color: #d1ad72; font-size: 28px; margin: 0;'>ROAMING ROUTES</h1>
+                            <p style='color: #a5a8b1; font-size: 14px; letter-spacing: 2px;'>Luxury Travel & Curated Experiences</p>
+                        </div>
+                        
+                        <div style='background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);'>
+                            <h2 style='color: #22c55e; font-size: 22px; margin-top: 0;'>Booking Confirmed!</h2>
+                            <p style='font-size: 16px; color: #eaeaea;'>Hi $name,</p>
+                            <p style='font-size: 15px; color: #a5a8b1; line-height: 1.6;'>Thank you for choosing Roaming Routes. Your payment for <strong>" . $dest_info['name'] . "</strong> has been received and your journey is officially booked.</p>
+                            
+                            <div style='margin: 25px 0; padding: 20px; background: rgba(209,173,114,0.1); border-left: 4px solid #d1ad72;'>
+                                <p style='margin: 5px 0; font-size: 14px; color: #d1ad72;'><strong>Transaction ID:</strong> $payment_id</p>
+                                <p style='margin: 5px 0; font-size: 14px; color: #d1ad72;'><strong>Destination:</strong> " . $dest_info['name'] . " (" . $dest_info['city'] . ")</p>
+                                <p style='margin: 5px 0; font-size: 14px; color: #d1ad72;'><strong>Amount Paid:</strong> ₹" . number_format($amount) . "</p>
+                            </div>
+                            
+                            <div style='text-align: center; margin-top: 35px;'>
+                                <a href='http://" . $_SERVER['HTTP_HOST'] . "/4_Travel/generate_receipt.php?razorpay_id=$payment_id' 
+                                   style='background: #d1ad72; color: #0f172a; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 800; font-size: 14px; display: inline-block;'>
+                                   DOWNLOAD OFFICIAL RECEIPT
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div style='text-align: center; margin-top: 40px;'>
+                            <p style='color: #64748b; font-size: 12px;'>&copy; 2026 Roaming Routes Pvt Ltd. This is an automated booking confirmation.</p>
+                        </div>
+                    </div>";
+
+                    $mail->send();
+                } catch (Exception $e) {
+                    error_log("Receipt Mail Error: " . $mail->ErrorInfo);
+                }
+
                 echo "success";
             } else {
                 error_log("Database Insertion Error: " . $stmt->error);
