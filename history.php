@@ -92,8 +92,90 @@ body {
     margin-bottom: 30px;
 }
 
-/* History placeholder */
-.history-card {
+.history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.history-card-real {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 15px;
+    display: flex;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.history-card-real:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateX(5px);
+}
+
+.trip-img {
+    width: 140px;
+    height: 100px;
+}
+
+.trip-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trip-details {
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trip-main h4 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.trip-loc {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.trip-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.trip-date {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.receipt-btn {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border: 1px solid rgba(209, 173, 114, 0.4);
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.receipt-btn:hover {
+    background: rgba(209, 173, 114, 0.1);
+    border-color: var(--accent);
+}
+
+.empty-history {
     background: rgba(255,255,255,0.04);
     border: 1px dashed rgba(209,173,114,0.4);
     border-radius: 14px;
@@ -101,12 +183,19 @@ body {
     text-align: center;
 }
 
-.history-card p {
+.empty-history i {
+    font-size: 40px;
+    color: var(--accent);
+    opacity: 0.3;
+    margin-bottom: 20px;
+}
+
+.empty-history p {
     font-size: 18px;
     margin-bottom: 8px;
 }
 
-.history-card span {
+.empty-history span {
     color: var(--text-muted);
     font-size: 14px;
 }
@@ -130,10 +219,50 @@ body {
     <div class="profile-content">
         <h3>Travel History</h3>
 
-        <!-- Empty / placeholder card -->
-        <div class="history-card">
-            <p>No trips yet</p>
-            <span>Your travel history will appear here.</span>
+        <div class="history-container">
+            <?php
+            $u_id = $_SESSION['u_id'];
+            $history_query = "SELECT p.*, d.name as dest_name, d.city, d.images 
+                             FROM payments p 
+                             JOIN destinations d ON p.destination_id = d.id 
+                             WHERE p.u_id = ? 
+                             ORDER BY p.created_at DESC";
+            
+            $h_stmt = $conn->prepare($history_query);
+            $h_stmt->bind_param("i", $u_id);
+            $h_stmt->execute();
+            $h_result = $h_stmt->get_result();
+
+            if ($h_result->num_rows > 0):
+                while ($trip = $h_result->fetch_assoc()):
+                    $imgList = explode(',', $trip['images']);
+                    $displayImg = trim($imgList[0]);
+            ?>
+                <div class="history-card-real">
+                    <div class="trip-img">
+                        <img src="img/destinations/<?php echo $displayImg; ?>" alt="Trip">
+                    </div>
+                    <div class="trip-details">
+                        <div class="trip-main">
+                            <h4><?php echo htmlspecialchars($trip['dest_name']); ?></h4>
+                            <p class="trip-loc"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($trip['city']); ?></p>
+                        </div>
+                        <div class="trip-meta">
+                            <span class="trip-date"><i class="far fa-calendar-check"></i> <?php echo date('d M, Y', strtotime($trip['created_at'])); ?></span>
+                            <a href="generate_receipt.php?razorpay_id=<?php echo $trip['razorpay_id']; ?>" class="receipt-btn" target="_blank">
+                                <i class="fas fa-file-invoice"></i> Receipt
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+            <?php else: ?>
+                <div class="empty-history">
+                    <i class="fas fa-plane-departure"></i>
+                    <p>No trips yet</p>
+                    <span>Your adventures will appear here.</span>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 

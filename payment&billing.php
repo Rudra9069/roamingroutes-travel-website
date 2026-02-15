@@ -164,7 +164,12 @@ body {
                         <p class="billing-loc"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($payment['city']); ?></p>
                         <div class="footer-row">
                             <span class="billing-date"><i class="far fa-calendar-alt"></i> <?php echo date('d M, Y', strtotime($payment['created_at'])); ?></span>
-                            <span class="billing-price">₹<?php echo number_format($payment['amount']); ?></span>
+                            <div class="footer-actions">
+                                <a href="generate_receipt.php?razorpay_id=<?php echo $payment['razorpay_id']; ?>" class="receipt-link-small" target="_blank">
+                                    <i class="fas fa-file-invoice"></i> Receipt
+                                </a>
+                                <span class="billing-price">₹<?php echo number_format($payment['amount']); ?></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -271,6 +276,30 @@ body {
 .billing-date {
     font-size: 12px;
     color: var(--text-muted);
+}
+
+.footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.receipt-link-small {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border: 1px solid rgba(209, 173, 114, 0.3);
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.receipt-link-small:hover {
+    background: rgba(209, 173, 114, 0.1);
+    border-color: var(--accent);
 }
 
 .billing-price {

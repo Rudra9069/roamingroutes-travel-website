@@ -392,7 +392,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['payment_id']))
                 .then(res => res.text())
                 .then(data => {
                     if (data.trim() === "success") {
-                        window.location.href = "success.php";
+                        window.location.href = "success.php?razorpay_id=" + response.razorpay_payment_id;
                     } else {
                         alert("Verification Error: " + data);
                         console.error("Payment Error:", data);
