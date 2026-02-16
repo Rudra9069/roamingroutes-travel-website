@@ -141,35 +141,42 @@ if (isset($_POST['send']))
     .abt-d3 {
         position: relative;
         background-color: rgb(255, 255, 255);
-        top: 15%;
-        left: 6.5%;
-        height: 70%;
-        width: 87%;
+        margin: 40px auto;
+        min-height: 250px;
+        width: 90%;
+        max-width: 1200px;
         border-radius: 20px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .subs-h{
         position: relative;
-        top: 24%;
-        left: 4%;
         color: rgb(45, 167, 201);
         font-family: 'Popins', sans-serif;
         font-weight: 700;
         font-size: 30px;
+        margin-bottom: 10px;
     }
 
     .subs-p1{
         position: relative;
-        top: 25%;
-        left: 4%;
         font-family: 'Nunito', sans-serif;
+        margin-bottom: 25px;
+    }
+
+    .subs-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
     }
 
     .abt-d3 input {
-        position: relative;
-        top: -50px;
-        margin-left: 60%;
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
         height: 40px;
         background-color: #fff;
         border: 1px solid rgba(168, 168, 168, 0.67);
@@ -179,14 +186,7 @@ if (isset($_POST['send']))
         padding: 20px 15px 20px 20px;
     }
 
-    .abt-d3 input::placeholder {
-        color: black;
-    }
-
     .abt-d3 .em-btn {
-        position: relative;
-        top: -92px;
-        margin-left: 85%;   
         width: 90px;
         height: 40px;
         border-radius: 30px;
@@ -197,26 +197,15 @@ if (isset($_POST['send']))
         font-family: 'Popins',sans-serif;
         font-weight: 600;
         font-size: 16px;
-    }
-
-    .abt-d3 input:hover {
-        background-color: rgb(255, 255, 255);
-    }
-
-    .abt-d3 .em-btn:hover {
-        color: rgb(255, 255, 255);
-        background-color: rgb(45, 167, 201);
-        font-size: 16.2px;
-        box-shadow: 0px 0px 10px 0.5px rgb(46, 119, 139);
-        transition: 0.8s;
+        cursor: pointer;
     }
 
     .subs-p2{
         position: relative;
-        top: -70px;
-        margin-left: 61%;
+        margin-top: 15px;
         font-family: 'Nunito', sans-serif;
         font-size: 13px;
+        width: 100%;
     }
 
     /* Section-3 */
@@ -248,12 +237,15 @@ if (isset($_POST['send']))
 
     .card1,.card2,.card3{
         position: relative;
-        height: 300px;
-        width: 400px;
+        height: auto;
+        min-height: 300px;
+        width: 100%;
+        max-width: 400px;
         background-color: rgba(207, 207, 207, 0.28);
         border-radius: 15px;
         border: none;
         box-shadow: 0px 0px 18px 2px rgba(55, 55, 55, 0.25);
+        padding-bottom: 20px;
     }
 
     .cards .cp-h{
@@ -279,25 +271,28 @@ if (isset($_POST['send']))
         .overlay-text_2 { font-size: 24px; top: 60%; }
         .abt-p { margin: 40px auto; font-size: 16px; }
         .subs-h { font-size: 26px; }
-        .abt-d3 input { margin-left: 10%; top: 40px; width: 80%; }
-        .abt-d3 .em-btn { margin-left: 10%; top: 50px; }
-        .subs-p2 { margin-left: 10%; top: 60px; }
-        .sec4-p { font-size: 38px; }
-        .card1, .card2, .card3 { width: 100%; max-width: 450px; height: auto; padding-bottom: 20px; }
+        .abt-d3 { padding: 40px 20px; align-items: center; text-align: center; }
+        .subs-form { justify-content: center; width: 100%; }
+        .abt-d3 input { margin: 10px 0; width: 100%; max-width: 350px; position: static; }
+        .abt-d3 .em-btn { margin: 10px 0; position: static; }
+        .subs-p2 { margin: 10px 0 0 0; position: static; text-align: center; }
+        .sec4-p { font-size: 38px; text-align: center; margin-left: 0; }
+        .card1, .card2, .card3 { width: 100%; max-width: 450px; height: auto; padding-bottom: 20px; margin: 10px auto; }
     }
 
     @media (max-width: 768px) {
         .abt-img-wrapper, .abt-img { height: 400px; }
         .overlay-text { font-size: 32px; top: 35%; }
         .overlay-text_2 { font-size: 20px; top: 55%; width: 90%; }
-        .sec3 { height: auto; padding: 40px 0; }
-        .abt-d3 { left: 5%; width: 90%; top: 0; padding-bottom: 40px; }
-        .subs-h, .subs-p1 { left: 5%; text-align: center; width: 90%; }
-        .abt-d3 input { margin: 20px auto; display: block; position: static; width: 90%; }
-        .abt-d3 .em-btn { margin: 0 auto; display: block; position: static; }
-        .subs-p2 { margin: 10px auto; text-align: center; position: static; width: 90%; }
-        .sec4-p { font-size: 30px; text-align: center; margin-left: 0; }
-        .cards { justify-content: center; }
+        .sec3 { height: auto; padding: 40px 0; background-color: rgb(45, 167, 201); }
+        .abt-d3 { width: 92%; margin: 0 auto; padding: 30px 15px; position: static; border-radius: 15px; }
+        .subs-h, .subs-p1 { left: 0; text-align: center; width: 100%; position: static; }
+        .subs-form { flex-direction: column; align-items: center; }
+        .abt-d3 input { margin: 15px 0; width: 100%; max-width: 280px; position: static; display: block; }
+        .abt-d3 .em-btn { margin: 5px 0; position: static; display: block; width: 120px; height: 45px; }
+        .subs-p2 { margin: 15px 0 0 0; text-align: center; position: static; width: 100%; font-size: 12px; }
+        .sec4-p { font-size: 30px; text-align: center; margin-left: 0; margin-top: 40px; }
+        .cards { justify-content: center; margin: 20px 10px; }
     }
 
     @media (max-width: 480px) {
@@ -350,11 +345,14 @@ if (isset($_POST['send']))
                                 and stay updated with the latest travel news, tips, and exclusive offers. <br> 
                                 As a subscriber, you’ll be the first to know about trending hotspots,<br> 
                                 hidden gems, seasonal deals.</p>
-            <form action="#" method="post">
-                <input type="email" id="email" name="email" placeholder="Email address">
-                <button class="em-btn" type="submit" name="send"> Submit </button><br>
-                <p class="subs-p2"> Subscribe to Roaming Routes for more updates and promotions.</p>
-            </form>
+            <div class="subs-form">
+                <form action="#" method="post" style="display: contents;">
+                    <input type="email" id="email" name="email" placeholder="Email address">
+                    <button class="em-btn" type="submit" name="send"> Submit </button><br>
+                </form>
+            </div>
+            <p class="subs-p2"> Subscribe to Roaming Routes for more updates and promotions.</p>
+
         </div>
     </section>
 

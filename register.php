@@ -1,4 +1,5 @@
 <?php include('database/traveldb.php'); ?>
+<?php include('config.php'); ?>
 
 <?php
 // Email
@@ -18,7 +19,7 @@ require 'vendor/autoload.php';
         $c_pwd = $_POST['c_pwd'];
         $dob = $_POST['dob'];
         $verify_token = md5(rand());
-        $verify_link = "http://localhost/4_Travel/verify.php?token=$verify_token";
+        $verify_link = $SITE_URL . "verify.php?token=$verify_token";
 
         $checkemail = "SELECT 1 FROM users WHERE email = '$email' LIMIT 1";
         $result = mysqli_query($conn , $checkemail);
@@ -159,11 +160,9 @@ require 'vendor/autoload.php';
 
     .main-container {
         position: relative;
-        margin-top: 5%;
-        margin-bottom: 3%;
+        margin: 80px auto 40px;
         display: flex;
-        height: 100%;
-        max-height: 700px;
+        min-height: 600px;
         width: 100%;
         max-width: 1000px;
         background: rgba(255, 255, 255, 0.05);
@@ -346,12 +345,15 @@ require 'vendor/autoload.php';
         .main-container {
             flex-direction: column;
             max-width: 450px;
-            max-height: none; /* Allow form to expand */
+            min-height: auto;
             border-radius: 20px;
+            margin: 100px 15px 40px;
         }
         .image-section {
-            height: 180px;
+            height: 200px;
         }
+        .image-overlay { padding: 20px; }
+        .image-overlay h2 { font-size: 22px; }
         .form-section {
             padding: 30px 20px;
         }
@@ -359,9 +361,11 @@ require 'vendor/autoload.php';
     }
 
     @media (max-width: 480px) {
-        .main-container { width: 100%; }
+        .auth-wrapper { padding: 10px; }
+        .main-container { margin: 80px 5px 30px; }
         .form-section { padding: 25px 15px; }
         .form-section h1 { font-size: 24px; }
+        .btn { padding: 12px; }
     }
 </style>
 

@@ -211,12 +211,36 @@ $data = $result->fetch_assoc();
             transition: 0.3s;
         }
 
-        @media print {
-            body { padding: 0; background: white; }
-            .receipt-container { box-shadow: none; border: none; }
-            .no-print { display: none; }
+    @media (max-width: 768px) {
+        body { padding: 15px; }
+        .receipt-container { padding: 25px; }
+        .header { flex-direction: column; align-items: center; text-align: center; }
+        .invoice-meta { text-align: center; margin-top: 20px; }
+        .details-grid { grid-template-columns: 1fr; gap: 25px; }
+        .items-table, .items-table thead, .items-table tbody, .items-table th, .items-table td, .items-table tr { 
+            display: block; 
         }
-    </style>
+        .items-table thead tr { position: absolute; top: -9999px; left: -9999px; }
+        .items-table tr { border: 1px solid #eee; margin-bottom: 10px; }
+        .items-table td { border: none; position: relative; padding-left: 50%; text-align: right; }
+        .items-table td:before { 
+            position: absolute; top: 15px; left: 15px; width: 45%; padding-right: 10px; 
+            white-space: nowrap; text-align: left; font-weight: bold; color: var(--gold);
+        }
+        .items-table td:nth-of-type(1):before { content: "Description"; }
+        .items-table td:nth-of-type(2):before { content: "Destination"; }
+        .items-table td:nth-of-type(3):before { content: "Amount"; }
+        .total-section { justify-content: center; }
+        .total-box { width: 100%; }
+        .paid-stamp { top: 150px; right: 20px; font-size: 24px; opacity: 0.2; }
+    }
+
+    @media print {
+        body { padding: 0; background: white; }
+        .receipt-container { box-shadow: none; border: none; }
+        .no-print { display: none; }
+    }
+</style>
 </head>
 <body>
 

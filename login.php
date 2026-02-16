@@ -89,6 +89,10 @@ if(isset($_POST['login']))
     body {
         margin: 0;
         padding: 0;
+        background-color: #0f0f12;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        overflow-x: hidden;
     }
 
     .auth-wrapper img {
@@ -103,130 +107,144 @@ if(isset($_POST['login']))
     }
 
     .card {
-        position: absolute;
-        top: 45%;
-        left: 52%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.28);
-        backdrop-filter: blur(2px);
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(15px);
-        width: 600px;
-        height: 450px;
-        border-radius: 50px;
+        width: 100%;
+        max-width: 500px;
+        padding: 50px 40px;
+        border-radius: 30px;
         font-family: 'Poppins', sans-serif;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 10;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        margin: auto;
     }
 
     .card h1 {
-        position: relative;
-        top: 50px;
-        font-size: 36px;
+        font-size: 32px;
         color: white;
         text-align: center;
+        margin-bottom: 35px;
+        font-weight: 600;
+        background: linear-gradient(90deg, #fff, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .card .input-box {
         position: relative;
-        top: 80px;
         width: 100%;
-        height: 25px;
-        margin: 30px 100px;
+        margin-bottom: 25px;
     }
 
     .input-box input {
-        width: 400px;
-        height: 10px;
-        background-color: #fff;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
         border: none;
         outline: none;
-        border-radius: 50px;
-        font-size: 17px;
-        padding: 20px 15px 20px 45px;
-    }
-
-    .input-box input::placeholder {
-        color: rgb(30, 29, 29);
+        border-radius: 12px;
+        font-size: 16px;
+        padding: 15px 15px 15px 45px;
     }
 
     .input-box i {
-        color: black;
+        color: #333;
         position: absolute;
-        left: 4%;
-        top: 45%;
-        transform: translate(-50%);
-        font-size: 20px;
-
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
     }
 
     .card .btn {
-        position: relative;
-        top: 100px;
-        width: 100px;
-        height: 45px;
+        width: 100%;
+        padding: 15px;
         background-color: #fff;
-        color: black;
+        color: #333;
         border: none;
         outline: none;
-        border-radius: 50px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
         cursor: pointer;
-        font-size: 16px;
-        color: #333;
-        font-weight: 600;
-        margin: 10px 250px;
-        transition: all 0.4s ease-in;
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 20px;
+        transition: all 0.3s ease;
     }
 
     .card .btn:hover {
-        background-color: rgb(43, 42, 42);
+        background-color: #000;
         color: #fff;
+        transform: translateY(-2px);
     }
 
     .card .register-link {
-        position: relative;
-        color: black;
-        top: 44%;
-        font-size: 19px;
+        margin-top: 30px;
         text-align: center;
+        color: white;
+        font-size: 15px;
     }
 
-    .register-link p{
-        position: relative; 
-        margin-top: 5%;
-        color: white;
-    }
     .register-link p a {
-        color: rgba(7, 201, 226, 1);
+        color: #0bd9f5;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .register-link p a:hover {
         text-decoration: underline;
     }
 
+    /* Background Setup */
+    .auth-wrapper {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: #000;
+        overflow: hidden;
+    }
+
+    .auth-wrapper img.bg-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4;
+        filter: blur(5px);
+        z-index: 0;
+    }
+
     /* Responsiveness Media Queries */
     @media (max-width: 768px) {
-        .auth-wrapper img { height: 100vh; object-fit: cover; }
-        .card { width: 90%; max-width: 450px; left: 50%; height: auto; padding: 40px 20px; border-radius: 30px; }
-        .card h1 { top: 0; font-size: 28px; margin-bottom: 30px; }
-        .card .input-box { top: 0; margin: 20px 0; width: 100%; height: auto; }
-        .input-box input { width: 100%; position: static; }
-        .input-box i { left: 40px; }
-        .card .btn { top: 10px; margin: 20px auto; display: block; }
-        .card .register-link { top: 20px; position: static; margin-top: 20px; font-size: 16px; }
+        .card { 
+            width: 100%; 
+            max-width: 420px; 
+            padding: 40px 25px; 
+            border-radius: 20px;
+            margin: 80px 15px 40px;
+        }
+        .card h1 { font-size: 28px; margin-bottom: 25px; }
     }
 
     @media (max-width: 480px) {
+        .auth-wrapper { padding: 10px; }
+        .card { padding: 30px 20px; }
         .card h1 { font-size: 24px; }
-        .card { padding: 30px 15px; }
+        .btn { padding: 12px; }
     }
 
 </style>
 
 <body>
     <div class="auth-wrapper">
-        <img alt="img" src="img/login_2.jpg">
+        <img class="bg-img" alt="img" src="img/login_2.jpg">
         <div class="card">
             <h1> Login | Sign-In </h1>
             <form onsubmit="return validation()" action="login.php"  method="post">

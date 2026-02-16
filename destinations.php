@@ -42,28 +42,29 @@ $result = mysqli_query($conn, $query);
 
     .overlay-text {
         position: absolute;
-        top: 65%;
-        left: 79%;
-        transform: translate(-100%, -100%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         color: rgb(255, 255, 255);
         font-family: 'Great Vibes', cursive;
         font-size: 65px;
         letter-spacing: 3px;
-        /* font-weight: bold; */
         z-index: 1;
         text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
         white-space: nowrap;
         animation: slideUp 1.4s ease-out forwards;
+        width: 100%;
+        text-align: center;
     }
 
     @keyframes slideUp {
         0% {
             opacity: 0;
-            transform: translate(-100%, 50%);
+            transform: translate(-50%, 50%);
         }
         100% {
             opacity: 1;
-            transform: translate(-100%, -100%);
+            transform: translate(-50%, -50%);
         }
     }
 
@@ -76,7 +77,7 @@ $result = mysqli_query($conn, $query);
         color: black;
         font-family: 'Cinzel', serif;
         font-size: 45px;
-        
+        padding: 0 15px;
     }
 
     /* section2 */
@@ -96,8 +97,9 @@ $result = mysqli_query($conn, $query);
     }
 
     .cards {
-        width: 420px;
-        height: 390px;
+        width: 100%;
+        max-width: 420px;
+        min-height: 420px;
         border: none;
         outline: none;
         overflow: hidden;
@@ -109,9 +111,11 @@ $result = mysqli_query($conn, $query);
         /* Scroll animation - GPU accelerated for smooth performance */
         opacity: 0;
         transform: translate3d(0, 60px, 0);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out, background-color 0.3s;
         will-change: opacity, transform;
         backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
     .cards.visible {
@@ -191,12 +195,39 @@ $result = mysqli_query($conn, $query);
         position: relative;
         background-color: rgba(0, 138, 9, 1);
         color:white;
-        padding: 5px 8px;
+        padding: 8px 15px;
         border-radius: 40px;
         border: 1px solid;    
         font-size: 15px;
-        margin-left: 45%;
+        margin-left: auto;
+        margin-right: 15px;
+        margin-top: auto;
+        margin-bottom: 20px;
         transition: all 0.3s ease-in;
+        width: fit-content;
+    }
+
+    .view-details {
+        position: relative;
+        background-color: rgba(255, 255, 255, 1);
+        padding: 8px 15px;
+        border-radius: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.91);    
+        color: black;
+        font-size: 15px;
+        margin-left: 15px;
+        margin-top: auto;
+        margin-bottom: 20px;
+        transition: all 0.3s ease-in;
+        width: fit-content;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-bottom: 10px;
     }
 
     .price:hover {
@@ -219,9 +250,9 @@ $result = mysqli_query($conn, $query);
 
     /* Responsiveness Media Queries */
     @media (max-width: 992px) {
-        .overlay-text { font-size: 45px; left: 50%; transform: translate(-50%, -50%); top: 50%; }
+        .overlay-text { font-size: 42px; left: 50%; transform: translate(-50%, -50%); top: 50%; width: 90%; white-space: normal; }
         .dest-heading { font-size: 35px; }
-        .price { margin-left: 30%; }
+        .price { margin-left: auto; }
         @keyframes slideUp {
             0% { opacity: 0; transform: translate(-50%, 50%); }
             100% { opacity: 1; transform: translate(-50%, -50%); }
@@ -230,17 +261,19 @@ $result = mysqli_query($conn, $query);
 
     @media (max-width: 768px) {
         .dest-img { height: 400px; }
-        .overlay-text { font-size: 32px; width: 90%; white-space: normal; }
-        .dest-heading { font-size: 28px; margin-top: 50px; }
-        .cards { width: 100%; max-width: 400px; height: auto; padding-bottom: 20px; }
-        .price { margin-left: 10%; margin-top: 10px; display: inline-block; }
-        .view-details { display: inline-block; }
+        .overlay-text { font-size: 30px; }
+        .dest-heading { font-size: 28px; margin-top: 40px; }
+        .cards { width: 95%; max-width: 400px; height: auto; min-height: auto; padding-bottom: 20px; margin: 0 auto; }
+        .main-places { padding: 10px; gap: 20px; }
+        .price { margin-right: 15px; font-size: 14px; }
+        .view-details { margin-left: 15px; font-size: 14px; }
     }
 
     @media (max-width: 480px) {
         .dest-img { height: 300px; }
-        .overlay-text { font-size: 26px; }
-        .dest-heading { font-size: 24px; }
+        .overlay-text { font-size: 24px; }
+        .dest-heading { font-size: 22px; }
+        .price, .view-details { padding: 6px 12px; font-size: 13px; }
     }
 </style>
 
@@ -285,12 +318,14 @@ $result = mysqli_query($conn, $query);
                             <!-- Description -->
                             <p class="description"> <?php echo $row['description']; ?> </p>
 
-                            <!-- View Details -->
-                            <button class="view-details">                    
-                                <a class="vd-a" href="destination-details.php?id=<?php echo $row['id']; ?>" target="_blank"> View more </a>
-                            </button>
-                            <!-- Price -->
-                            <button class="price"> Price: <?php echo "₹" . $row['price_range']; ?> </button>
+                            <div class="card-footer">
+                                <!-- View Details -->
+                                <button class="view-details">                    
+                                    <a class="vd-a" href="destination-details.php?id=<?php echo $row['id']; ?>" target="_blank"> View more </a>
+                                </button>
+                                <!-- Price -->
+                                <button class="price"> Price: <?php echo "₹" . $row['price_range']; ?> </button>
+                            </div>
                         </div>
                     <?php
                 } ?>

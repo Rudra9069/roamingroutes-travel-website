@@ -20,6 +20,10 @@ $result = mysqli_query($conn, $query);
 <?php include('includes/header.php'); ?>
 
 <style>
+    :root {
+        --anim-delay: 2.2s; /* Default delay */
+    }
+
     body {
         padding: 0;
         margin: 0;
@@ -53,12 +57,14 @@ $result = mysqli_query($conn, $query);
         z-index: 1;
         text-shadow: 0px 0px 14px rgba(234, 247, 255, 0.28);
         font-family: 'Poppins', sans-serif;
+        width: 100%;
+        padding: 0 20px;
     }
 
     .welcome-user {
         position: absolute;
         top: 15%;
-        left: 1%;
+        left: 5%;
         transform: none;
         color: #ffffffe4;
         font-family: 'Poppins';
@@ -73,7 +79,7 @@ $result = mysqli_query($conn, $query);
         font-family: 'Poppins';
         font-size: 55px;
         width: 0%;
-        animation: typing 3.5s steps(1000, end) 2.2s forwards;
+        animation: typing 3.5s steps(1000, end) var(--anim-delay) forwards;
     }
 
     .plane-icon {
@@ -82,7 +88,7 @@ $result = mysqli_query($conn, $query);
         overflow: hidden;
         position: absolute;
         top: 46.5%;
-        animation: fly 1.5s steps(1000, end) 1.8s forwards;
+        animation: fly 1.5s steps(1000, end) var(--anim-delay) forwards;
         color: rgba(255, 255, 255, 0.9);
         font-size: 40px;
     }
@@ -108,6 +114,16 @@ $result = mysqli_query($conn, $query);
         }
     }
 
+    @keyframes fly-mobile {
+        from {
+            left: 35%;
+        }
+
+        to {
+            left: 75%;
+        }
+    }
+
 
     /* Section2 */
     .sec2 {
@@ -128,8 +144,9 @@ $result = mysqli_query($conn, $query);
 
     .dest-btn {
         position: relative;
-        margin-left: 80%;
-        top: -20px;
+        margin: 0 auto;
+        display: block;
+        width: fit-content;
         height: 35px;
         border: 1px solid rgba(37, 37, 37, 0.22);
         border-radius: 20px;
@@ -138,6 +155,13 @@ $result = mysqli_query($conn, $query);
         padding: 0px 20px 0px 50px;
         box-shadow: 0px 0px 5px 0px rgb(255, 255, 255);
         transition: 0.4s;
+    }
+
+    @media (min-width: 992px) {
+        .dest-btn {
+            margin-left: 80%;
+            top: -20px;
+        }
     }
 
     .dest-btn a {
@@ -188,7 +212,8 @@ $result = mysqli_query($conn, $query);
 
     .card {
         position: relative;
-        width: 460px;
+        width: 100%;
+        max-width: 460px;
         height: 300px;
         background-color: #f2f2f2;
         border-radius: 8px;
@@ -371,51 +396,51 @@ $result = mysqli_query($conn, $query);
     }
 
     /* Responsiveness Media Queries */
+    @media (max-width: 1200px) {
+        .h1-vid, .h1_2-vid { font-size: 55px; }
+    }
+
     @media (max-width: 992px) {
-        .overlay-text { font-size: 42px; width: 95%; }
-        .typing-effect { font-size: 38px; }
-        .plane-icon { font-size: 30px; top: 48%; }
-        .sec2-h2 { font-size: 38px; }
-        .dest-btn { margin-left: auto; margin-right: 3%; top: 0; display: block; width: fit-content; }
-        .sec4-h2 { font-size: 42px; }
-        .sec4-p { margin-left: 2%; font-size: 18px; top: 8%; }
-        .h1-vid, .h1_2-vid { font-size: 50px; letter-spacing: 5px; }
-        .h1-vid { margin-left: 10%; }
-        .h1_2-vid { margin-left: 45%; }
+        .overlay-text { font-size: 38px; width: 100%; padding: 0 20px; }
+        .sec2-h2 { font-size: 38px; text-align: center; margin-left: 0; top: 20px; }
+        .dest-btn { top: 40px; margin-bottom: 60px; }
+        .typing-effect { font-size: 36px; }
+        .main-img { height: 500px; }
+        .sec4 { height: auto; padding: 60px 0; display: flex; flex-direction: column; align-items: center; }
+        .sec4-h2 { font-size: 42px; text-align: center; top: 0; margin: 0; }
+        .sec4-p { text-align: center; margin-left: 0; top: 10px; margin-bottom: 40px; }
+        .gallery { top: 0; width: 100%; }
+        .h1-vid, .h1_2-vid { font-size: 45px; letter-spacing: 5px; text-align: center; width: 100%; margin-left: 0; }
+        .h1_2-vid { top: 45%; }
     }
 
     @media (max-width: 768px) {
-        .main-img { height: 450px; }
-        .overlay-text { font-size: 32px; top: 55%; }
-        .typing-effect { font-size: 28px; }
-        .plane-icon { font-size: 22px; top: 54%; }
-        .welcome-user { font-size: 18px; top: 12%; }
-        .sec2-h2 { font-size: 32px; text-align: center; margin-left: 0; }
-        .dest-btn { margin: 20px auto 0; top: 0; }
-        .card { width: 100%; max-width: 400px; height: 250px; }
-        .sec4 { height: auto; padding-bottom: 40px; }
-        .sec4-h2 { font-size: 34px; text-align: center; }
-        .sec4-p { text-align: center; margin-left: 0; top: 10px; }
-        .gallery { top: 30px; }
-        .h1-vid, .h1_2-vid { font-size: 35px; position: relative; top: 0; margin: 20px 0; text-align: center; display: block; }
-        .overlay-video { display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .h1-vid { margin-left: 0; margin-top: 50px; }
-        .h1_2-vid { margin-left: 0; }
-        
-        @keyframes fly {
-            from { left: 30%; }
-            to { left: 65%; }
-        }
+        .overlay-text { font-size: 30px; }
+        .welcome-user { top: auto; bottom: 15%; font-size: 16px; width: 100%; text-align: center; left: 0; }
+        .typing-effect { font-size: 26px; }
+        .card { max-width: 380px; height: 240px; margin: 0 auto; }
+        .h1-vid, .h1_2-vid { font-size: 32px; position: relative; top: 0; margin: 15px 0; display: block; letter-spacing: 4px; }
+        .overlay-video { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        .sec5-video { height: 400px; object-fit: cover; }
     }
 
     @media (max-width: 480px) {
-        .main-img { height: 400px; }
-        .overlay-text { font-size: 26px; }
-        .typing-effect { font-size: 22px; }
-        .plane-icon { font-size: 18px; }
-        .sec2-h2 { font-size: 28px; }
+        .overlay-text { font-size: 22px; }
         .sec4-h2 { font-size: 28px; }
-        .sec4-p { font-size: 14px; }
+        .sec4-p { font-size: 16px; margin-bottom: 20px; }
+        .gallery-item { width: 180px; height: 230px; }
+        .typing-effect { 
+            font-size: 20px;
+            animation-duration: 2s;
+            animation-delay: var(--anim-delay);
+        }
+        .plane-icon { 
+            font-size: 20px; 
+            top: 48.5%;
+            animation-name: fly-mobile;
+            animation-duration: 2s;
+            animation-delay: var(--anim-delay);
+        }
     }
 </style>
 
@@ -733,6 +758,16 @@ $result = mysqli_query($conn, $query);
         .splash-hidden {
             display: none !important;
         }
+
+        /* Responsive Splash Logo */
+        @media (max-width: 768px) {
+            .splash-logo-1 {
+                width: 250px;
+            }
+            .splash-logo-2 {
+                width: 200px;
+            }
+        }
     </style>
 
     <script>
@@ -753,32 +788,36 @@ $result = mysqli_query($conn, $query);
                 }
             }
             
-            // Check if coming from a DIFFERENT page on the same site
-            var isFromOtherPage = referrer && 
-                                  referrer.indexOf(currentHost) !== -1 && 
-                                  referrer.indexOf(currentPath) === -1;
+            // Get the project base path (e.g., /4_Travel/ or /)
+            var projectBase = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
             
-            // Show splash on: first visit, direct URL access, or refresh
-            // Hide splash on: navigation from other pages on the site
-            if (isFromOtherPage && !isReload) {
-                // Coming from another page on the site - hide splash immediately
-                if (splash) {
-                    splash.classList.add('splash-hidden');
-                }
-            } else {
-                // First visit, direct access, or refresh - show splash animation
+            // Detailed internal navigation check
+            // isInternal: Coming from another page within the same project directory
+            var isInternal = referrer && 
+                             referrer.indexOf(currentHost) !== -1 && 
+                             referrer.indexOf(projectBase) !== -1;
+            
+            // First visit from outside, or direct access, or refresh - show splash
+            if (!isInternal || isReload) {
+                document.documentElement.style.setProperty('--anim-delay', '1.8s');
                 setTimeout(function() {
                     if (splash) {
                         splash.classList.add('splash-hidden');
                     }
                 }, 3000);
+            } else {
+                // Internal navigation - hide splash immediately and start animation fast
+                document.documentElement.style.setProperty('--anim-delay', '0.2s');
+                if (splash) {
+                    splash.classList.add('splash-hidden');
+                }
             }
         })();
     </script>
 
     <!-- Section-1 -->
     <section class="sec1">
-        <img class="main-img" src="img/main-bg_2.jpg" alt="bg-img">
+        <img class="main-img" src="img/main-bg_2.jpg" alt="bg-img" decoding="async">
         <?php if (!empty($_SESSION['name'])): ?>
             <div class="welcome-user"> Welcome, <?= htmlspecialchars($_SESSION['name']) ?> </div>
 
@@ -813,7 +852,8 @@ $result = mysqli_query($conn, $query);
                                                      '<?php echo $row['price_range']; ?>')">
                         <p class="overlay-places"> <?php echo $row['state']; ?> </p>
                         <img src="img/destinations/<?php echo $firstImage; ?>"
-                            alt="<?php echo htmlspecialchars($row['name']); ?>">
+                            alt="<?php echo htmlspecialchars($row['name']); ?>"
+                            loading="lazy" decoding="async">
                     </div>
                     <?php
 
@@ -841,37 +881,37 @@ $result = mysqli_query($conn, $query);
         <div class="gallery">
 
             <div class="gallery-item">
-                <img src="img/mountain.jpg" alt="Mountain">
+                <img src="img/mountain.jpg" alt="Mountain" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">mountains</div>
             </div>
 
             <div class="gallery-item">
-                <img src="img/lake.jpg" alt="Lake">
+                <img src="img/lake.jpg" alt="Lake" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">lake</div>
             </div>
 
             <div class="gallery-item">
-                <img src="img/street.jpg" alt="Street">
+                <img src="img/street.jpg" alt="Street" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">streets</div>
             </div>
 
             <div class="gallery-item">
-                <img src="img/citynight.jpg" alt="City Night">
+                <img src="img/citynight.jpg" alt="City Night" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">citynights</div>
             </div>
 
             <div class="gallery-item">
-                <img src="img/coast.jpg" alt="Coast">
+                <img src="img/coast.jpg" alt="Coast" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">coast</div>
             </div>
 
             <div class="gallery-item">
-                <img src="img/oldtown.jpg" alt="Old Town">
+                <img src="img/oldtown.jpg" alt="Old Town" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">old-town</div>
             </div>
@@ -883,7 +923,7 @@ $result = mysqli_query($conn, $query);
     <section class="sec5">
 
         <div class="video-wrapper">
-            <video autoplay muted loop class="sec5-video">
+            <video autoplay muted loop class="sec5-video" preload="metadata">
                 <source src="img/video.mp4" type="video/mp4">
             </video>
             <div class="overlay-video">

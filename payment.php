@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['payment_id']))
                             </div>
                             
                             <div style='text-align: center; margin-top: 35px;'>
-                                <a href='http://" . $_SERVER['HTTP_HOST'] . "/4_Travel/generate_receipt.php?razorpay_id=$payment_id' 
+                                <a href='{$SITE_URL}generate_receipt.php?razorpay_id=$payment_id' 
                                    style='background: #d1ad72; color: #0f172a; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 800; font-size: 14px; display: inline-block;'>
                                    DOWNLOAD OFFICIAL RECEIPT
                                 </a>
@@ -206,15 +206,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['payment_id']))
     }
 
     .trip-header {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     .trip-header h2 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         color: var(--brand-blue);
         margin: 0;
         font-weight: 800;
         line-height: 1.2;
+    }
+
+    @media (max-width: 600px) {
+        .trip-header h2 { font-size: 1.8rem; }
+        .price-summary .total-amount { font-size: 2.2rem; }
     }
 
     .trip-header .location {
@@ -351,10 +356,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['payment_id']))
     }
 
     @media (max-width: 900px) {
-        .checkout-card { grid-template-columns: 1fr; }
-        .trip-info { border-right: none; border-bottom: 1px solid #eee; padding: 40px; }
-        .checkout-side { padding: 40px; }
-        .main-container { padding-top: 80px; }
+        .checkout-card { grid-template-columns: 1fr; border-radius: 20px; }
+        .trip-info { border-right: none; border-bottom: 1px solid #eee; padding: 30px 20px; }
+        .checkout-side { padding: 30px 20px; }
+        .main-container { padding-top: 80px; padding-bottom: 20px; }
+        .price-summary .total-amount { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 480px) {
+        .trip-header h2 { font-size: 1.6rem; }
+        .checkout-side h3 { font-size: 1.4rem; }
+        .pay-button { padding: 18px; font-size: 1.1rem; }
     }
 </style>
 

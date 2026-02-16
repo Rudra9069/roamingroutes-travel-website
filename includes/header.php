@@ -170,66 +170,70 @@
             }
 
             /* Hamburger Menu */
-            .hamburger {
+            .hamburger-v2 {
                 display: none;
                 flex-direction: column;
                 cursor: pointer;
                 gap: 5px;
             }
 
-            .hamburger span {
+            .hamburger-v2 span {
                 height: 3px;
                 width: 25px;
-                background: #D2B68A;
+                background-color: #ffffff !important;
                 border-radius: 2px;
             }
 
             /* Last-section */
             .last-sec {
                 width: 100%;
-                height: 500px;
-                background-color:rgba(16, 16, 16, 0.94);
+                background-color: rgba(16, 16, 16, 0.94);
                 color: white;
                 font-family: 'Poppins', sans-serif;
+                padding: 60px 40px;
+                display: grid;
+                grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+                gap: 50px;
             }
 
-            h3 {
-                position: relative;
-                top: 4%;
-                margin-left: 2%;
+            .footer-col {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .last-sec h3 {
                 color: white;
+                margin-bottom: 15px;
+                font-size: 28px;
             }
 
             .last-sec p {
-                position: relative;
-                top: 20px;
-                margin-left: 2%;
-                font-weight: 100;
+                font-weight: 300;
+                margin-bottom: 25px;
+                color: rgba(255,255,255,0.7);
             }
 
             .last-sec h4 {
-                position: relative;
-                top: 9%;
-                margin-left: 30px;
+                margin-bottom: 20px;
+                font-size: 18px;
+                letter-spacing: 1px;
             }
 
             .icons {
-                position: relative;
-                top: 50px;
-                margin-left: 1%;
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
             }
 
             .icons i {
-                font-size: 28px;
-                margin-left: 1%;
+                font-size: 24px;
                 color: white;
-                transition: 0.5s;
+                transition: 0.3s;
             }
 
             .icons a {
+                color: inherit;
                 text-decoration: none;
-                border: none;
-                outline: none;
             }
 
             .insta i:hover {
@@ -254,144 +258,136 @@
                 color: #BD081C;
             }
 
-            .subs h4 {
-                position: relative;
-                margin-top: 90px;
+            .subs {
+                margin-top: 30px;
+            }
+
+            .subs form {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 15px;
+                margin: 20px 0;
             }
 
             .subs input {
-                position: relative;
-                margin-left: 2%;
-                margin-top: 1%;
-                width: 300px;
-                height: 40px;
-                background-color: #fff;
-                border: none;
+                flex: 1;
+                min-width: 200px;
+                max-width: 300px;
+                height: 45px;
+                background-color: #f8f8f8;
+                border: 1px solid rgba(255,255,255,0.1);
                 outline: none;
-                border-radius: 40px;
-                font-size: 17px;
-                padding: 20px 15px 20px 20px;
-            }
-
-            .subs input::placeholder {
-                color: black;
+                border-radius: 50px;
+                font-size: 16px;
+                padding: 0 25px;
+                transition: 0.3s;
+                color: #333;
             }
 
             .subs .em-btn {
-                position: relative;
-                margin-top: 1%;
-                margin-left: 2%;
-                width: 70px;
-                height: 30px;
-                border-radius: 30px;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
                 border: none;
-                outline: none;
-                transition: 0.4s all ease-in;
+                background: white;
+                color: #333;
+                cursor: pointer;
+                transition: 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .subs .em-btn i {
-                font-size: 25px;
-                margin-top: 3px;
+                font-size: 18px;
             }
 
             .subs input:hover {
-                background-color: rgb(235, 235, 235);
+                background-color: #f0f0f0;
             }
 
             .subs .em-btn:hover {
-                color: rgba(255, 255, 255, 1);
-                background-color: #d2983bff;
-                
+                color: white;
+                background-color: #d2983b;
             }
 
             .subs .sub-p {
-                font-family: 'Poppins', sans-serif;
+                font-size: 14px;
+                color: rgba(255,255,255,0.6);
+                line-height: 1.5;
             }
 
             /* Features */
-            .features {
-                position: relative;
-                margin-top: -27.7%;
-                margin-left: 40%;
-            }
-
             .features h5 {
-                font-size: 30px;
-            }
-
-            .features .our-features {
-                font-size: 18px;
-                position: relative; 
-                margin-top: 3%;
+                font-size: 22px;
+                margin-bottom: 25px;
+                color: white;
             }
 
             .features .our-features a {
-                position: relative;
                 display: block;
                 text-decoration: none;
-                color: whitesmoke;
-                margin-bottom: 2%;
+                color: rgba(255,255,255,0.7);
+                margin-bottom: 12px;
+                transition: color 0.3s;
             }
 
             .features .our-features a:hover {
-                color: rgb(205, 183, 148);
+                color: #d2983b;
             }
 
             /* Top destinations */
-            .top-destinations {
-                position: relative;
-                margin-top: -18.9%;
-                margin-left: 58%;
-            }
-
             .top-destinations h5 {
-                font-size: 25px;
-            }
-
-            .top-destinations .top-dest {
-                margin-top: 20px;
-                font-size: 18px;
+                font-size: 22px;
+                margin-bottom: 25px;
+                color: white;
             }
 
             .top-destinations .top-dest a {
                 display: block;
                 text-decoration: none;
-                color: whitesmoke;
-                margin-bottom: 2%;
+                color: rgba(255,255,255,0.7);
+                margin-bottom: 10px;
+                transition: color 0.3s;
             }
 
             .top-destinations .top-dest a:hover {
-                color: rgb(126, 182, 214);
+                color: #7eb6d6;
             }
 
             /* Contact us */
-            .contact-us {
-                position: relative;
-                margin-top: -26.8%;
-                margin-left: 86%;
-            }
-
             .contact-us h5 {
-                font-size: 25px;
-                margin-left: 20%;
+                font-size: 22px;
+                margin-bottom: 25px;
+                color: white;
             }
 
             .contact-us .contact-icons {
-                position: relative;
-                margin-left: -35%;
-                margin-top: 40%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .contact-us .contact-icons i {
-                font-size: 23px;
-                margin-bottom: 25px;
+            .contact-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .contact-item i {
+                font-size: 18px;
+                margin-top: 4px;
+                width: 20px;
+                text-align: center;
             }
 
             .contact-us .contact-icons .cont-details {
-                position: relative;
-                margin-top: -24%;
-                margin-left: 10%;
-                color: rgb(220, 220, 220);
+                color: rgba(255,255,255,0.7);
+                font-size: 14px;
+                line-height: 1.6;
+                margin: 0;
+                word-break: break-word;
             }
 
             /* footer */
@@ -445,63 +441,64 @@
             display: none; /* Hide search in main navbar row on mobile */
         }
 
-        .hamburger {
+        .hamburger-v2 {
             display: flex;
             z-index: 1001;
         }
 
-        .features, .top-destinations, .contact-us {
-            margin: 2rem auto 0;
-            text-align: center;
-        }
-
-        .features,
-        .top-destinations,
-        .contact-us {
-            margin-top: 2rem;
-            margin-left: 0;
-        }
-
         .last-sec {
-            height: auto;
-            padding: 2rem 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 50px 30px;
+        }
+
+        .features, .top-destinations, .contact-us {
+            margin: 0;
+            text-align: left;
         }
 
         .subs input {
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .subs .em-btn {
-            margin-left: 0;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .contact-us .contact-icons {
-            margin-left: 0;
-            margin-top: 1rem;
-        }
-
-        .contact-us .contact-icons .cont-details {
-            margin-left: 10px;
-            display: inline;
+            max-width: 100%;
         }
     }
 
     @media (max-width: 576px) {
-        .custom-navbar .title {
-            font-size: 1.2rem;
+        .last-sec {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+            padding: 40px 15px;
         }
 
-        .nav-links li a,
-        .nav-btn .loginbtn,
-        .nav-btn .s-btn {
-            font-size: 14px;
+        .features, .top-destinations, .contact-us {
+            text-align: center;
+        }
+
+        .contact-us .contact-icons {
+            align-items: flex-start;
+            display: inline-flex;
+            flex-direction: column;
+            text-align: left;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            justify-content: flex-start;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .subs form {
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         .subs input {
             font-size: 14px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 5px;
         }
 
         .subs .em-btn i {
@@ -550,7 +547,7 @@
 
 
                 <!-- hamburger menu -->
-                <div class="hamburger" onclick="toggleMenu()">
+                <div class="hamburger-v2" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
                     <span></span>

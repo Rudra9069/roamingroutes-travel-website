@@ -126,10 +126,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         padding: 30px 20px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        height: 100%;
+        min-height: 100%;
         max-height: 630px;
         width: 100%;
         max-width: 450px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .ch2 {
@@ -138,51 +142,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         font-family: 'Poppins';
         font-size: 35px;
         font-weight: 700;
+        margin-bottom: 30px;
     }
 
-    .card input[type="text"] {
-        position: relative;
-        top: 25%;
-        left: 9%;
-        margin-right: 25px;
-        padding: 10px;
-        width: 150px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
+    .card .form-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
     }
 
+    .card input[type="text"],
     .card input[type="email"],
-    input[type="number"] {
-        position: relative;
-        top: 30%;
-        left: 9%;
-        padding: 10px;
-        width: 330px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
+    .card input[type="number"],
     .card textarea {
-        position: relative;
-        top: 30.5%;
-        left: 9%;
-        padding: 10px;
-        width: 330px;
-        margin-bottom: 20px;
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 16px;
+        outline: none;
     }
 
     .card .c-em-btn {
-        position: relative;
-        top: 30%;
-        left: 9%;
-        padding: 10px;
-        width: 330px;
+        width: 100%;
+        padding: 12px;
         background-color: rgb(30, 30, 30);
         border: none;
         color: white;
@@ -228,11 +212,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     .card3 {
         position: relative;
         height: 200px;
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
         background-color: rgb(40, 40, 40);
         border-radius: 15px;
         border: none;
         box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.33);
+        margin-bottom: 20px;
     }
 
     .cards .cp-h {
@@ -263,11 +249,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     /* Map */
     .map-container {
         position: relative;
-        left: 7%;
+        width: 100%;
         max-width: 1200px;
+        margin: 40px auto;
         box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.83);
         border-radius: 12px;
         overflow: hidden;
+    }
+
+    /* Info Cards Internal Realignment */
+    .card1, .card2, .card3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .cp-h {
+        position: static !important;
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .cards .cp {
+        position: static !important;
+        margin: 10px 0 0 0 !important;
+        padding: 0 !important;
+    }
+
+    .cards i {
+        position: static !important;
+        margin: 0 !important;
     }
 
     iframe {
@@ -279,29 +295,93 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     /* Responsiveness Media Queries */
     @media (max-width: 992px) {
         .ch { font-size: 45px; }
-        .cp { font-size: 16px; top: 40%; }
+        .cp { font-size: 16px; top: 40%; width: 90%; }
         .card { left: 50%; transform: translateX(-50%); top: 50%; max-height: none; height: auto; padding: 20px; }
-        .card input[type="text"], .card input[type="email"], .card input[type="number"], .card textarea, .card .c-em-btn { left: 5%; width: 90%; position: static; margin-top: 15px; }
-        .card input[type="text"] { width: 90%; display: block; }
+        .card input[type="text"], .card input[type="email"], .card input[type="number"], .card textarea, .card .c-em-btn { width: 100%; position: static; margin-top: 15px; }
         .sec2-p { font-size: 38px; }
         .card1, .card2, .card3 { width: 100%; max-width: 450px; margin: 10px auto; }
+        .map-container { width: 95%; margin: 20px auto; }
     }
 
     @media (max-width: 768px) {
-        .image-container { height: auto; min-height: 400px; }
-        .background-image { height: 400px; }
-        .overlay { position: static; flex-direction: column; background: #000; padding: 40px 20px; }
-        .ch { position: static; font-size: 32px; text-align: center; }
-        .cp { position: static; font-size: 15px; text-align: center; margin-top: 10px; }
-        .card { position: static; transform: none; margin: -50px auto 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .sec2-p { font-size: 30px; }
-        .map-container { left: 0; width: 100%; border-radius: 0; }
+        .image-container { 
+            height: auto; 
+            min-height: 100vh; /* Allow it to cover the full screen */
+            display: flex; 
+            flex-direction: column; 
+            background-color: #000;
+        }
+        .background-image { 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Cover the entire container including the form area */
+            object-fit: cover;
+            opacity: 0.7; /* Keep it visible but subtle */
+            z-index: 1;
+        }
+        .overlay { 
+            position: relative; 
+            flex-direction: column; 
+            background: rgba(0, 0, 0, 0.4); 
+            padding: 80px 20px 40px; 
+            align-items: center; 
+            height: auto; 
+            z-index: 2;
+        }
+        .ch { 
+            position: static; 
+            font-size: 42px; 
+            text-align: center; 
+            margin-bottom: 15px; 
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .cp { 
+            position: static; 
+            font-size: 16px; 
+            text-align: center; 
+            margin-top: 0; 
+            width: 100%; 
+            color: #efefef; 
+            line-height: 1.6;
+        }
+        .card { 
+            position: relative; 
+            left: auto !important; /* Force reset of desktop offset */
+            transform: none; 
+            margin: 0 auto 60px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4); 
+            width: 90%; 
+            background: #fff; 
+            z-index: 10; 
+            padding: 25px;
+        }
+        .sec2-p { font-size: 32px; margin-top: 40px; }
+        .cards { justify-content: center; margin: 20px 15px; }
+        .map-container { width: 100%; border-radius: 0; margin-top: 0; }
         iframe { border: none; height: 350px; }
     }
 
     @media (max-width: 480px) {
-        .ch { font-size: 26px; }
-        .ch2 { font-size: 28px; }
+        .ch { font-size: 28px; }
+        .ch2 { font-size: 22px; margin-bottom: 20px; }
+        .card { 
+            width: 88%; 
+            padding: 20px 15px; 
+        }
+        .card input[type="text"], 
+        .card input[type="email"], 
+        .card input[type="number"], 
+        .card textarea {
+            padding: 10px;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        .card .c-em-btn {
+            padding: 10px;
+            font-size: 16px;
+        }
     }
 </style>
 
@@ -329,11 +409,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             <div class="card">
                 <h4 class="ch2"> Have a query? </h4>
                 <form action="contact.php" method="post">
-                    <input type="text" id="fname" name="fname" placeholder="First Name" required>
-                    <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+                    <div class="form-row">
+                        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+                        <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+                    </div>
                     <input type="email" id="email" name="email" placeholder="Email Address" required>
                     <input type="number" id="email" name="number" placeholder="Contact no." required>
-                    <textarea id="message" name="message" rows="5" cols="30"
+                    <textarea id="message" name="message" rows="5"
                         placeholder="Type your message here..."></textarea>
                     <button class="c-em-btn" type="submit"> Submit </button>
                 </form>
@@ -351,7 +433,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     <p class="cp-h"> Contact No <i style="color: lightgreen;" class="fa-solid fa-mobile"></i> </p>
                     <p class="cp">
                         +91 8200214115 <br>
-                        +91 9998007563
                     </p>
                 </div>
 
