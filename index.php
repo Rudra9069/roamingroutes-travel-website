@@ -1,27 +1,28 @@
-<?php
-
-session_start();
+<?php session_start();
 include('database/traveldb.php');
-$search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
-if (!empty($search)) 
-    {
-    $query = "SELECT * FROM destinations 
-            WHERE (name LIKE '%$search%' OR city LIKE '%$search%' OR state LIKE '%$search%')";
-} 
-else 
-    {
-    $query = "SELECT * FROM destinations WHERE reviews = 'top'";
+$search =isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+
+if ( !empty($search)) {
+    $query ="SELECT * FROM destinations 
+ WHERE (name LIKE '%$search%' OR city LIKE '%$search%' OR state LIKE '%$search%')";
+
 }
 
-$result = mysqli_query($conn, $query); 
+else {
+    $query ="SELECT * FROM destinations WHERE reviews = 'top'";
+}
+
+$result =mysqli_query($conn, $query);
 
 ?>
-
 <?php include('includes/header.php'); ?>
 
-<style>
+
+<style> 
+
     :root {
-        --anim-delay: 2.2s; /* Default delay */
+        --anim-delay: 2.2s;
+        /* Default delay */
     }
 
     body {
@@ -397,51 +398,163 @@ $result = mysqli_query($conn, $query);
 
     /* Responsiveness Media Queries */
     @media (max-width: 1200px) {
-        .h1-vid, .h1_2-vid { font-size: 55px; }
+
+        .h1-vid,
+        .h1_2-vid {
+            font-size: 55px;
+        }
     }
 
     @media (max-width: 992px) {
-        .overlay-text { font-size: 38px; width: 100%; padding: 0 20px; }
-        .sec2-h2 { font-size: 38px; text-align: center; margin-left: 0; top: 20px; }
-        .dest-btn { top: 40px; margin-bottom: 60px; }
-        .typing-effect { font-size: 36px; }
-        .main-img { height: 500px; }
-        .sec4 { height: auto; padding: 60px 0; display: flex; flex-direction: column; align-items: center; }
-        .sec4-h2 { font-size: 42px; text-align: center; top: 0; margin: 0; }
-        .sec4-p { text-align: center; margin-left: 0; top: 10px; margin-bottom: 40px; }
-        .gallery { top: 0; width: 100%; }
-        .h1-vid, .h1_2-vid { font-size: 45px; letter-spacing: 5px; text-align: center; width: 100%; margin-left: 0; }
-        .h1_2-vid { top: 45%; }
+        .overlay-text {
+            font-size: 38px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .sec2-h2 {
+            font-size: 38px;
+            text-align: center;
+            margin-left: 0;
+            top: 20px;
+        }
+
+        .dest-btn {
+            top: 40px;
+            margin-bottom: 60px;
+        }
+
+        .typing-effect {
+            font-size: 36px;
+        }
+
+        .main-img {
+            height: 500px;
+        }
+
+        .sec4 {
+            height: auto;
+            padding: 60px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sec4-h2 {
+            font-size: 42px;
+            text-align: center;
+            top: 0;
+            margin: 0;
+        }
+
+        .sec4-p {
+            text-align: center;
+            margin-left: 0;
+            top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .gallery {
+            top: 0;
+            width: 100%;
+        }
+
+        .h1-vid,
+        .h1_2-vid {
+            font-size: 45px;
+            letter-spacing: 5px;
+            text-align: center;
+            width: 100%;
+            margin-left: 0;
+        }
+
+        .h1_2-vid {
+            top: 45%;
+        }
     }
 
     @media (max-width: 768px) {
-        .overlay-text { font-size: 30px; }
-        .welcome-user { top: auto; bottom: 15%; font-size: 16px; width: 100%; text-align: center; left: 0; }
-        .typing-effect { font-size: 26px; }
-        .card { max-width: 380px; height: 240px; margin: 0 auto; }
-        .h1-vid, .h1_2-vid { font-size: 32px; position: relative; top: 0; margin: 15px 0; display: block; letter-spacing: 4px; }
-        .overlay-video { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-        .sec5-video { height: 400px; object-fit: cover; }
+        .overlay-text {
+            font-size: 30px;
+        }
+
+        .welcome-user {
+            top: auto;
+            bottom: 15%;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            left: 0;
+        }
+
+        .typing-effect {
+            font-size: 26px;
+        }
+
+        .card {
+            max-width: 380px;
+            height: 240px;
+            margin: 0 auto;
+        }
+
+        .h1-vid,
+        .h1_2-vid {
+            font-size: 32px;
+            position: relative;
+            top: 0;
+            margin: 15px 0;
+            display: block;
+            letter-spacing: 4px;
+        }
+
+        .overlay-video {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .sec5-video {
+            height: 400px;
+            object-fit: cover;
+        }
     }
 
     @media (max-width: 480px) {
-        .overlay-text { font-size: 22px; }
-        .sec4-h2 { font-size: 28px; }
-        .sec4-p { font-size: 16px; margin-bottom: 20px; }
-        .gallery-item { width: 180px; height: 230px; }
-        .typing-effect { 
+        .overlay-text {
+            font-size: 22px;
+        }
+
+        .sec4-h2 {
+            font-size: 28px;
+        }
+
+        .sec4-p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item {
+            width: 180px;
+            height: 230px;
+        }
+
+        .typing-effect {
             font-size: 20px;
             animation-duration: 2s;
             animation-delay: var(--anim-delay);
         }
-        .plane-icon { 
-            font-size: 20px; 
+
+        .plane-icon {
+            font-size: 20px;
             top: 48.5%;
             animation-name: fly-mobile;
             animation-duration: 2s;
             animation-delay: var(--anim-delay);
         }
     }
+
 </style>
 
 <!-- Popup css -->
@@ -466,28 +579,31 @@ $result = mysqli_query($conn, $query);
         background: white;
         padding: 25px;
         border-radius: 10px;
-        width: 100%;
-        max-width: 1000px;
-        height: 100%;
-        max-height: 95%;
+        width: 90%;
+        max-width: 800px;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     /* Title */
     .popup-title {
-        position: relative;
         font-family: 'Poppins', sans-serif;
         text-align: center;
+        margin-bottom: 20px;
+        width: 100%;
     }
 
     /* Image inside popup */
     .popup-image {
-        position: relative;
-        margin: 5% auto 0 auto;
-        width: 80%;
-        height: 70%;
-        display: block;
+        width: 100%;
+        max-height: 400px;
         object-fit: cover;
         border-radius: 8px;
+        margin-bottom: 20px;
     }
 
     /* Close button */
@@ -497,105 +613,100 @@ $result = mysqli_query($conn, $query);
         right: 15px;
         font-size: 25px;
         cursor: pointer;
+        z-index: 10;
     }
 
     /* Popup-city */
     .popup-city {
-        position: relative;
-        margin-top: 2%;
-        margin-left: 10%;
         font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Popup buttons container */
+    .popup-btn-container {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap;
     }
 
     /* Pop-up btn */
-    .popup-d-btn {
-        position: relative;
-        left: 25%;
-        margin-left: 1%;
+    .popup-d-btn,
+    .popup-p-btn {
         text-decoration: none;
         height: 40px;
         width: 200px;
         outline: none;
         border: none;
         border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+
+    .popup-d-btn {
         background-color: rgb(26, 84, 143);
     }
 
-    .popup-d-btn a {
-        position: relative;
+    .popup-p-btn {
+        background-color: rgb(205, 166, 104);
+    }
+
+    .popup-d-btn a,
+    .popup-p-btn a {
         text-decoration: none;
-        color: rgb(244, 244, 244);
         font-family: 'Poppins', sans-serif;
         text-transform: lowercase;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .popup-d-btn a {
+        color: rgb(244, 244, 244);
+    }
+
+    .popup-p-btn a {
+        color: rgb(35, 35, 35);
     }
 
     .popup-d-btn:hover {
         background-color: rgb(11, 78, 145);
-        box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
-    }
-
-    .popup-p-btn {
-        position: relative;
-        left: 25%;
-        margin-left: 1%;
-        text-decoration: none;
-        height: 40px;
-        width: 200px;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        background-color: rgb(205, 166, 104);
-    }
-
-    .popup-p-btn a {
-        position: relative;
-        text-decoration: none;
-        color: rgb(35, 35, 35);
-        text-transform: lowercase;
-        font-family: 'Poppins', sans-serif;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .popup-p-btn:hover {
         background-color: rgb(203, 145, 52);
-        box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-    /* Popup Guest */
-    .popup-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-
-    /* Popup content guest */
+    /* Guest Popup */
     .popup-content-guest {
         position: relative;
         background-color: #00203FFF;
         color: white;
-        padding: 25px;
+        padding: 30px;
         border-radius: 10px;
-        width: 100%;
-        max-width: 1000px;
-        height: 100%;
-        max-height: 95%;
-    }
-
-    /* Title */
-    .popup-title-guest {
-        position: relative;
+        width: 90%;
+        max-width: 600px;
+        height: auto;
+        max-height: 90vh;
         text-align: center;
-        margin-top: 10%;
-        font-size: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    /* Close Button */
+    .popup-title-guest {
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
     .popup-close-guest {
         position: absolute;
         color: rgb(207, 160, 85);
@@ -609,277 +720,349 @@ $result = mysqli_query($conn, $query);
         color: rgb(211, 210, 210);
     }
 
-    /* Text */
-    .popup-title-guest {
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .popup-content-guest .p-imp {
-        text-align: center;
-        margin-top: 20px;
+    .p-imp {
         text-decoration: underline;
         font-family: 'Poppins', sans-serif;
+        margin-bottom: 25px;
+        font-size: 14px;
     }
 
-    /* Buttons */
+    .guest-btn-container {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
     .popup-l-btn,
     .popup-r-btn {
-        position: relative;
-        left: 32%;
-        margin-top: 5%;
-        margin-left: 1%;
-        text-decoration: none;
         height: 40px;
-        width: 150px;
-        outline: none;
-        border: none;
+        width: 120px;
         border-radius: 5px;
         text-align: center;
-        display: inline-block;
         font-family: 'Poppins', sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
     }
 
-    /* Login Button */
     .popup-l-btn {
         background-color: rgb(205, 166, 104);
         color: black;
-        padding: 6px 0px;
     }
 
-    /* Register Button */
     .popup-r-btn {
         background-color: black;
         color: white;
-        padding: 6px 0px;
+        border: 1px solid white;
     }
 
-    /* Thank You Text */
-    .popup-content-guest .thankyou-text {
-        text-align: center;
-        margin-top: 5%;
-        font-size: 30px;
+    .thankyou-text {
+        font-size: 20px;
         font-family: 'Poppins', sans-serif;
         font-weight: 500;
+        margin-bottom: 20px;
     }
 
-    /* Logo */
     .popup-g-logo {
-        position: relative;
-        height: 55px;
-        margin-left: 85%;
-        margin-top: 15%;
+        height: 40px;
+        width: auto;
     }
+
+    /* Mobile specific popup adjustments */
+    @media (max-width: 768px) {
+
+        .popup-content,
+        .popup-content-guest {
+            padding: 20px;
+        }
+
+        .popup-title {
+            font-size: 20px;
+        }
+
+        .popup-image {
+            max-height: 250px;
+        }
+
+        .popup-title-guest {
+            font-size: 18px;
+        }
+
+        .popup-d-btn,
+        .popup-p-btn {
+            width: 100%;
+        }
+
+        .popup-btn-container {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .guest-btn-container {
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .popup-l-btn,
+        .popup-r-btn {
+            width: 150px;
+        }
+
+        .thankyou-text {
+            font-size: 16px;
+        }
+    }
+
+</style>
+
+<style>
+/* Gallery Smooth Scroll Animation */
+.gallery {
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    background: #cbcbcbff !important;
+    position: relative !important;
+    padding: 0 !important;
+    height: auto !important; /* Ensure it wraps the items */
+}
+
+.gallery-track {
+    display: flex !important;
+    width: max-content !important;
+    animation: galleryScroll 40s linear infinite !important;
+}
+
+@keyframes galleryScroll {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.gallery-item {
+    flex-shrink: 0 !important;
+    width: 250px !important;
+    height: 350px !important;
+    margin-right: 0 !important;
+    position: relative !important;
+    top: 0 !important; /* Reset position */
+}
+
 </style>
 <body>
 
-    <!-- Splash Screen -->
+<!-- Splash Screen -->
     <div id="splash-screen" class="splash-screen">
         <div class="splash-logo-container">
             <img src="img/logo/ss_2.png" alt="Roaming Routes" class="splash-logo-2">
             <img src="img/logo/ss_1.png" alt="Roaming Routes" class="splash-logo-1">
         </div>
     </div>
+    
+<style>
 
-    <style>
-        /* Splash Screen Styles */
-        .splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: splashFadeOut 0.5s ease-out 1.7s forwards;
+/* Splash Screen Styles */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: splashFadeOut 0.5s ease-out 1.7s forwards;
+}
+
+.splash-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* First logo part - blur to clear */
+.splash-logo-1 {
+    width: 400px;
+    height: auto;
+    animation: logoBlurToClear 0.8s ease-out forwards;
+}
+
+/* Second logo part - slide up from below */
+.splash-logo-2 {
+    width: 300px;
+    height: auto;
+    opacity: 0;
+    animation: logoSlideUp 0.5s ease-out 0.8s forwards;
+}
+
+@keyframes logoBlurToClear {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+        filter: blur(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+}
+
+@keyframes logoSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes splashFadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.splash-hidden {
+    display: none !important;
+}
+
+/* Responsive Splash Logo */
+@media (max-width: 768px) {
+    .splash-logo-1 {
+        width: 250px;
+    }
+
+    .splash-logo-2 {
+        width: 200px;
+    }
+}
+
+</style>
+
+<script>
+    (function() {
+        var splash=document.getElementById('splash-screen');
+        var referrer=document.referrer;
+        var currentHost=window.location.host;
+        var currentPath=window.location.pathname;
+
+        // Detect if this is a page refresh
+        var isReload=false;
+
+        if (window.performance && window.performance.navigation) {
+            isReload=window.performance.navigation.type===1;
         }
 
-        .splash-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
+        else if (window.performance && performance.getEntriesByType) {
+            var navEntries=performance.getEntriesByType('navigation');
 
-        /* First logo part - blur to clear */
-        .splash-logo-1 {
-            width: 400px;
-            height: auto;
-            animation: logoBlurToClear 0.8s ease-out forwards;
-        }
-
-        /* Second logo part - slide up from below */
-        .splash-logo-2 {
-            width: 300px;
-            height: auto;
-            opacity: 0;
-            animation: logoSlideUp 0.5s ease-out 0.8s forwards;
-        }
-
-        @keyframes logoBlurToClear {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-                filter: blur(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0px);
+            if (navEntries.length > 0) {
+                isReload=navEntries[0].type==='reload';
             }
         }
 
-        @keyframes logoSlideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        // Get the project base path (e.g., /4_Travel/ or /)
+        var projectBase=currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
 
-        @keyframes splashFadeOut {
-            0% {
-                opacity: 1;
-                visibility: visible;
-            }
-            100% {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
+        // Detailed internal navigation check
+        // isInternal: Coming from another page within the same project directory
+        var isInternal=referrer && referrer.indexOf(currentHost) !==-1 && referrer.indexOf(projectBase) !==-1;
 
-        .splash-hidden {
-            display: none !important;
-        }
+        // First visit from outside, or direct access, or refresh - show splash
+        if ( !isInternal || isReload) {
+            document.documentElement.style.setProperty('--anim-delay', '1.8s');
 
-        /* Responsive Splash Logo */
-        @media (max-width: 768px) {
-            .splash-logo-1 {
-                width: 250px;
-            }
-            .splash-logo-2 {
-                width: 200px;
-            }
-        }
-    </style>
-
-    <script>
-        (function() {
-            var splash = document.getElementById('splash-screen');
-            var referrer = document.referrer;
-            var currentHost = window.location.host;
-            var currentPath = window.location.pathname;
-            
-            // Detect if this is a page refresh
-            var isReload = false;
-            if (window.performance && window.performance.navigation) {
-                isReload = window.performance.navigation.type === 1;
-            } else if (window.performance && performance.getEntriesByType) {
-                var navEntries = performance.getEntriesByType('navigation');
-                if (navEntries.length > 0) {
-                    isReload = navEntries[0].type === 'reload';
-                }
-            }
-            
-            // Get the project base path (e.g., /4_Travel/ or /)
-            var projectBase = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-            
-            // Detailed internal navigation check
-            // isInternal: Coming from another page within the same project directory
-            var isInternal = referrer && 
-                             referrer.indexOf(currentHost) !== -1 && 
-                             referrer.indexOf(projectBase) !== -1;
-            
-            // First visit from outside, or direct access, or refresh - show splash
-            if (!isInternal || isReload) {
-                document.documentElement.style.setProperty('--anim-delay', '1.8s');
-                setTimeout(function() {
+            setTimeout(function() {
                     if (splash) {
                         splash.classList.add('splash-hidden');
                     }
-                }, 3000);
-            } else {
-                // Internal navigation - hide splash immediately and start animation fast
-                document.documentElement.style.setProperty('--anim-delay', '0.2s');
-                if (splash) {
-                    splash.classList.add('splash-hidden');
                 }
+
+                , 3000);
+        }
+
+        else {
+            // Internal navigation - hide splash immediately and start animation fast
+            document.documentElement.style.setProperty('--anim-delay', '0.2s');
+
+            if (splash) {
+                splash.classList.add('splash-hidden');
             }
-        })();
-    </script>
+        }
+    })();
+</script>
 
-    <!-- Section-1 -->
-    <section class="sec1">
-        <img class="main-img" src="img/main-bg_2.jpg" alt="bg-img" decoding="async">
-        <?php if (!empty($_SESSION['name'])): ?>
-            <div class="welcome-user"> Welcome, <?= htmlspecialchars($_SESSION['name']) ?> </div>
-
-        <?php endif; ?>
-        <div class="overlay-text typing-effect"> Explore the World! </div>
-        <div class="typing-wrapper"> <i class="fas fa-plane plane-icon"></i> </div>
-    </section>
-
-    <!-- Section-2 -->
-    <section class="sec2">
-        <h3 class="sec2-h2"> Our Top <br>Destinations : </h3>
-        <button class="dest-btn">
-            <a href="destinations.php">
-                < view all destinations </a>
-        </button>
-    </section>
-
-    <!-- Section-3 -->
-    <section class="sec3 fadeInUp">
-        <div class="main-places">
-            <?php if (mysqli_num_rows($result) > 0): ?>
-                <?php
-
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $allImages = explode(',', $row['images']);
-                    $firstImage = trim($allImages[0]);
-
-                    ?>
-                    <div class="card" onclick="showPopup('<?php echo $firstImage; ?>', 
-                                                     '<?php echo $row['name']; ?>',
-                                                     '<?php echo $row['city']; ?>', 
-                                                     '<?php echo $row['price_range']; ?>')">
-                        <p class="overlay-places"> <?php echo $row['state']; ?> </p>
-                        <img src="img/destinations/<?php echo $firstImage; ?>"
-                            alt="<?php echo htmlspecialchars($row['name']); ?>"
-                            loading="lazy" decoding="async">
-                    </div>
-                    <?php
-
-                }
-
-                ?>
-            <?php else: ?>
-                <p style="color: black; font-size: 20px; font-weight: 500;">No destinations found for your search.</p>
-            <?php endif; ?>
+<!-- Section-1 -->
+<section class="sec1">
+    <img class="main-img" src="img/main-bg_2.jpg" alt="bg-img" decoding="async">
+    <?php if ( !empty($_SESSION['name'])): ?>
+        <div class="welcome-user">Welcome, <?=htmlspecialchars($_SESSION['name']) ?></div><?php endif; ?>
+        <div class="overlay-text typing-effect">Explore the World ! </div>
+        <div class="typing-wrapper"><i class="fas fa-plane plane-icon"></i>
         </div>
-    </section> 
+</section>
+        
+<!-- Section-2 -->
+<section class="sec2">
+    <h3 class="sec2-h2">Our Top <br>Destinations : </h3>
+    <button class="dest-btn"><a href="destinations.php">< view all destinations </a></button>
+</section>
 
-    <!-- Section 4 -->
-    <section class="sec4">
+<!-- Section-3 -->
+<section class="sec3 fadeInUp">
+    <div class="main-places"><?php if (mysqli_num_rows($result) > 0): ?>
+    <?php while ($row =mysqli_fetch_assoc($result)) {
+    $allImages =explode(',', $row['images']);
+    $firstImage =trim($allImages[0]); ?>
+    
+    <div class="card" onclick="showPopup('<?php echo $firstImage; ?>', 
+    '<?php echo $row['name']; ?>',
+    '<?php echo $row['city']; ?>',
+    '<?php echo $row['price_range']; ?>')">
+ <p class="overlay-places"><?php echo $row['state']; ?></p>
+ <img src="img/destinations/<?php echo $firstImage; ?>"
+    alt="<?php echo htmlspecialchars($row['name']); ?>"
+    loading="lazy" decoding="async"></div><?php
+}
 
-        <h2 class="sec4-h2"> #roamingroutes </h2>
-        <p class="sec4-p">
-            Follow Roaming Routes:
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-x-twitter"></i>
-        </p>
+?>
+<?php else: ?>
+<p style="color: black; font-size: 20px; font-weight: 500;">No destinations found for your search.</p><?php endif;?>
+</div>
+</section>
+<!-- Section 4 -->
 
-        <!-- Gallery imgs -->
-        <div class="gallery">
-
+<section class="sec4">
+    <h2 class="sec4-h2">#roamingroutes </h2>
+    <p class="sec4-p">Follow Roaming Routes: 
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-x-twitter"></i></p>
+    <!-- Gallery imgs -->
+     <div class="gallery">
+        <div class="gallery-track">
+            <!-- First set of images -->
             <div class="gallery-item">
                 <img src="img/mountain.jpg" alt="Mountain" loading="lazy" decoding="async">
                 <div class="overlay"></div>
@@ -897,117 +1080,156 @@ $result = mysqli_query($conn, $query);
                 <div class="overlay"></div>
                 <div class="caption">streets</div>
             </div>
-
+            
             <div class="gallery-item">
                 <img src="img/citynight.jpg" alt="City Night" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">citynights</div>
             </div>
-
+            
             <div class="gallery-item">
                 <img src="img/coast.jpg" alt="Coast" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">coast</div>
             </div>
-
+            
             <div class="gallery-item">
                 <img src="img/oldtown.jpg" alt="Old Town" loading="lazy" decoding="async">
                 <div class="overlay"></div>
                 <div class="caption">old-town</div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- Section 5 -->
-    <section class="sec5">
-
-        <div class="video-wrapper">
-            <video autoplay muted loop class="sec5-video" preload="metadata">
-                <source src="img/video.mp4" type="video/mp4">
-            </video>
-            <div class="overlay-video">
-                <h1 class="h1-vid"> your journey </h1>
-                <h1 class="h1_2-vid"> begins here </h1>
+            <!-- Duplicated set for seamless looping -->
+            <div class="gallery-item">
+                <img src="img/mountain.jpg" alt="Mountain" loading="lazy" decoding="async">
+                <div class="overlay"></div>
+                <div class="caption">mountains</div>
             </div>
-        </div>
 
-    </section>
+            <div class="gallery-item">
+                <img src="img/lake.jpg" alt="Lake" loading="lazy" decoding="async">
+                <div class="overlay"></div>
+                <div class="caption">lake</div>
+            </div>
 
-    <!-- POP-UP box -->
-    <div id="popup" class="popup-overlay" onclick="closePopup()">
-        <div class="popup-content" onclick="event.stopPropagation()">
-            <span class="popup-close" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></span>
-            <h2 id="popupName" class="popup-title"> </h2>
-            <img id="popupImage" class="popup-image">
-            <p class="popup-city"> <strong> City: </strong> <span id="popupCity"> </span> </p>
-            <button class="popup-d-btn"> <a href="destinations.php"> View more details </a> </button>
-            <button class="popup-p-btn"> <a href="payment.php" id="popupPriceBtn"> Starting from ₹0 </a> </button>
-
-
-            <!-- POP-UP for non-registered users -->
-            <div id="popup-guest" class="popup-overlay" onclick="closePopup()">
-                <div class="popup-content-guest" onclick="event.stopPropagation()">
-                    <span class="popup-close-guest" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></span>
-                    <h2 class="popup-title-guest">Please log in or create an account <br> to view destination
-                        details or
-                        payment procedure.</h2>
-                    <p class="p-imp">You must have an account to access this feature.</p>
-                    <div>
-                        <a href="login.php" class="popup-l-btn">Login</a>
-                        <a href="register.php" class="popup-r-btn">Register</a>
-                    </div>
-                    <p class="thankyou-text">Thankyou, Roaming Routes :) </p>
-                    <img class="popup-g-logo" alt="popup-logo" src="img/logo/rr_logo.png"></img>
-                </div>
+            <div class="gallery-item">
+                <img src="img/street.jpg" alt="Street" loading="lazy" decoding="async">
+                <div class="overlay"></div>
+                <div class="caption">streets</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="img/citynight.jpg" alt="City Night" loading="lazy" decoding="async">
+                <div class="overlay"></div>
+                <div class="caption">citynights</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="img/coast.jpg" alt="Coast" loading="lazy" decoding="async">
+                <div class="overlay"></div>
+                <div class="caption">coast</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="img/oldtown.jpg" alt="Old Town" loading="lazy" decoding="async">
+                <div class="overlay"></div>
+                <div class="caption">old-town</div>
             </div>
         </div>
     </div>
+</section>
 
-    <?php $u_id = isset($_SESSION['u_id']); ?>
+<!-- Section 5 -->
+<section class="sec5">
+    <div class="video-wrapper">
+        <video autoplay muted loop class="sec5-video" preload="metadata">
+            <source src="img/video.mp4" type="video/mp4"></video>
+        <div class="overlay-video">
+            <h1 class="h1-vid">your journey </h1>
+            <h1 class="h1_2-vid">begins here </h1>
+        </div>
+    </div>
+</section>
 
-    <!-- script for pop-up -->
-    <script>
-        function showPopup(images, name, city, price_range) {
-            document.getElementById("popupImage").src = "img/destinations/" + images;
-            document.getElementById("popupName").innerText = name;
-            document.getElementById("popupCity").innerText = city;
-            document.getElementById("popupPriceBtn").innerText = "Starting from ₹" + price_range;
-            document.getElementById("popup").style.display = "flex";
+<!-- POP-UP box -->
+<div id="popup" class="popup-overlay" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+        <span class="popup-close" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></span>
+        <h2 id="popupName" class="popup-title"></h2>
+        <img id="popupImage" class="popup-image">
+        <p class="popup-city"><strong>City: </strong><span id="popupCity"></span></p>
+        <div class="popup-btn-container">
+            <button class="popup-d-btn"><a href="destinations.php">View more details </a></button>
+            <button class="popup-p-btn"><a href="payment.php" id="popupPriceBtn">Starting from ₹0 </a></button>
+        </div>
+    </div>
+</div>
 
-            const non_registered = <?php echo $u_id ? 'false' : 'true'; ?>;
-
-            document.querySelector(".popup-d-btn a").addEventListener("click", function (event) {
-                event.preventDefault();
-                if (non_registered) {
-                    showGuestPopup();
-                }
-                else {
-                    window.location.href = "destinations.php";
-                }
-            });
-
-            document.querySelector(".popup-p-btn a").addEventListener("click", function (event) {
-                event.preventDefault();
-                if (non_registered) {
-                    showGuestPopup();
-                }
-                else {
-                    window.location.href = "payment.php";
-                }
-            });
-        }
+<!-- POP-UP for non-registered users -->
+<div id="popup-guest" class="popup-overlay" onclick="closePopup()">
+    <div class="popup-content-guest" onclick="event.stopPropagation()">
+        <span class="popup-close-guest" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></span>
+        <h2 class="popup-title-guest">Please log in or create an account <br>to view destination details or payment procedure.</h2>
+        <p class="p-imp">You must have an account to access this feature.</p>
+        <div class="guest-btn-container">
+            <a href="login.php" class="popup-l-btn">Login</a>
+            <a href="register.php" class="popup-r-btn">Register</a>
+        </div>
+        <p class="thankyou-text">Thankyou, Roaming Routes :) </p>
+        <img class="popup-g-logo" alt="popup-logo" src="img/logo/rr_logo_2.png"></img>
+    </div>
+</div>
+</div>
+<?php $u_id =isset($_SESSION['u_id']);?>
 
 
-        function showGuestPopup() {
-            document.getElementById("popup-guest").style.display = "flex";
-        }
+<!-- script for pop-up -->
+ 
+<script>
+    function showPopup(images, name, city, price_range) {
+    document.getElementById("popupImage").src="img/destinations/"+images;
+    document.getElementById("popupName").innerText=name;
+    document.getElementById("popupCity").innerText=city;
+    document.getElementById("popupPriceBtn").innerText="Starting from ₹"+price_range;
+    document.getElementById("popup").style.display="flex";
 
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
-            document.getElementById("popup-guest").style.display = "none";
-        }
-    </script>
+    const non_registered=<?php echo $u_id ? 'false': 'true';
+    ?>;
 
-</body>
+    document.querySelector(".popup-d-btn a").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            if (non_registered) {
+                showGuestPopup();
+            }
+
+            else {
+                window.location.href="destinations.php";
+            }
+        });
+
+    document.querySelector(".popup-p-btn a").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            if (non_registered) {
+                showGuestPopup();
+            }
+
+            else {
+                window.location.href="payment.php";
+            }
+        });
+}
+
+
+function showGuestPopup() {
+    document.getElementById("popup-guest").style.display="flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display="none";
+    document.getElementById("popup-guest").style.display="none";
+}
+
+</script>
 <?php include('includes/footer.php'); ?>

@@ -11,51 +11,55 @@ require 'vendor/autoload.php';
 
 if (isset($_POST['send']))
 {
-  $email = $_POST['email'];
-
-  //Checking if user has registered.
-  $check_email = " SELECT * FROM users WHERE email = '$email' ";
-  $check_sql = mysqli_query($conn,$check_email);
-
-  if (mysqli_num_rows($check_sql) > 0) 
+  if (isset($_SESSION['u_id'])) 
   {
-    $mail = new PHPMailer(true);
+    $email = $_POST['email'];
 
-    if($check_sql == true)
+    //Checking if user has registered.
+    $check_email = " SELECT * FROM users WHERE email = '$email' ";
+    $check_sql = mysqli_query($conn,$check_email);
+
+    if (mysqli_num_rows($check_sql) > 0) 
     {
-      //Server settings
-      $mail->isSMTP();
-      $mail->Host = 'smtp.gmail.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'roamingroutes33@gmail.com';
-      $mail->Password = 'tsjs igis tazc vazs';
-      $mail->SMTPSecure = 'ssl';
-      $mail->Port = 465;
+      $mail = new PHPMailer(true);
 
-      //Recipients
-      $mail->setFrom('roamingroutes33@gmail.com', 'Roaming Routes');
-      $mail->addAddress($email);
+      try
+      {
+        //Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'roamingroutes33@gmail.com';
+        $mail->Password = 'tsjs igis tazc vazs';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
 
-      //Content
-      $mail->isHTML(true);
-      $mail->Subject = "Thank you for Subscribing";
-      $mail->Body = "<h3> Congratulations," .$email. "</h3><br>
-                      <p> Discount of 20% coupon will be credited in your account. <br> 
-                          It is only for the first travel package.</p>
-                      <h5> Thankyou, Roaming Routes :) </h5>  ";
+        //Recipients
+        $mail->setFrom('roamingroutes33@gmail.com', 'Roaming Routes');
+        $mail->addAddress($email);
 
-      $mail->send();
-      echo "<script> alert('Thanks for Subscribing. email has been sent to $email'); </script>";
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = "Thank you for Subscribing";
+        $mail->Body = "<h3> Congratulations," .$email. "</h3><br>
+                        <p> Discount of 20% coupon will be credited in your account. <br> 
+                            It is only for the first travel package.</p>
+                        <h5> Thankyou, Roaming Routes :) </h5>  ";
+
+        $mail->send();
+        echo "<script> alert('Thanks for Subscribing. email has been sent to $email'); </script>";
+      }
+      catch (Exception $e) 
+      {
+        echo "Email could not be sent. Error: {$mail->ErrorInfo}";
+      }
     }
-    else
-    {
-        echo "<script> alert('Please Login or create an account to get email.') </script>";
-        exit();
+    else {
+      echo "<script> alert('This email is not registered. Please register first.'); </script>";
     }
-    // catch (Exception $e) 
-    // {
-    //   echo "Email could not be sent. Error: {$mail->ErrorInfo}";
-    // }
+  }
+  else {
+    echo "<script> alert('Please create an account or register to subscribe.'); </script>";
   }
 }
 
@@ -134,14 +138,15 @@ if (isset($_POST['send']))
     /* Section-3 */
     .sec3 {
         background-color: rgb(45, 167, 201);
-        height: 380px;
+        height: auto;
+        padding: 60px 0;
         width: 100%;
     }
 
     .abt-d3 {
         position: relative;
         background-color: rgb(255, 255, 255);
-        margin: 40px auto;
+        margin: 0 auto;
         min-height: 250px;
         width: 90%;
         max-width: 1200px;
@@ -150,6 +155,8 @@ if (isset($_POST['send']))
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     .subs-h{
@@ -165,6 +172,7 @@ if (isset($_POST['send']))
         position: relative;
         font-family: 'Nunito', sans-serif;
         margin-bottom: 25px;
+        max-width: 800px;
     }
 
     .subs-form {
@@ -172,18 +180,19 @@ if (isset($_POST['send']))
         flex-wrap: wrap;
         gap: 15px;
         align-items: center;
+        justify-content: center;
     }
 
     .abt-d3 input {
         width: 100%;
         max-width: 300px;
-        height: 40px;
+        height: 45px;
         background-color: #fff;
         border: 1px solid rgba(168, 168, 168, 0.67);
         outline: none;
         border-radius: 40px;
         font-size: 17px;
-        padding: 20px 15px 20px 20px;
+        padding: 10px 20px;
     }
 
     .abt-d3 .em-btn {

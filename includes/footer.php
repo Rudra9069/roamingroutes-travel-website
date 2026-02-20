@@ -10,46 +10,55 @@ require 'vendor/autoload.php';
 
 if (isset($_POST['send']))
 {
-  $email = $_POST['email'];
-
-  //Checking if user has registered.
-  $check_email = " SELECT * FROM users WHERE email = '$email' ";
-  $check_sql = mysqli_query($conn,$check_email);
-
-  if (mysqli_num_rows($check_sql) > 0) 
+  if (isset($_SESSION['u_id'])) 
   {
-    $mail = new PHPMailer(true);
+    $email = $_POST['email'];
 
-    try
+    //Checking if user has registered.
+    $check_email = " SELECT * FROM users WHERE email = '$email' ";
+    $check_sql = mysqli_query($conn,$check_email);
+
+    if (mysqli_num_rows($check_sql) > 0) 
     {
-      //Server settings
-      $mail->isSMTP();
-      $mail->Host = 'smtp.gmail.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'roamingroutes33@gmail.com';
-      $mail->Password = 'tsjs igis tazc vazs';
-      $mail->SMTPSecure = 'ssl';
-      $mail->Port = 465;
+      $mail = new PHPMailer(true);
 
-      //Recipients
-      $mail->setFrom('roamingroutes33@gmail.com', 'Roaming Routes');
-      $mail->addAddress($email);
+      try
+      {
+        //Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'roamingroutes33@gmail.com';
+        $mail->Password = 'tsjs igis tazc vazs';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
 
-      //Content
-      $mail->isHTML(true);
-      $mail->Subject = "Thank you for Subscribing";
-      $mail->Body = "<h3> Congratulations," .$email. "</h3><br>
-                      <p> Discount of 20% coupon will be credited in your account. <br> 
-                          It is only for the first travel package.</p>
-                      <h5> Thankyou, Roaming Routes :) </h5>  ";
+        //Recipients
+        $mail->setFrom('roamingroutes33@gmail.com', 'Roaming Routes');
+        $mail->addAddress($email);
 
-      $mail->send();
-      echo "<script> alert('Thanks for Subscribing. email has been sent to $email'); </script>";
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = "Thank you for Subscribing";
+        $mail->Body = "<h3> Congratulations," .$email. "</h3><br>
+                        <p> Discount of 20% coupon will be credited in your account. <br> 
+                            It is only for the first travel package.</p>
+                        <h5> Thankyou, Roaming Routes :) </h5>  ";
+
+        $mail->send();
+        echo "<script> alert('Thanks for Subscribing. email has been sent to $email'); </script>";
+      }
+      catch (Exception $e) 
+      {
+        echo "Email could not be sent. Error: {$mail->ErrorInfo}";
+      }
     }
-    catch (Exception $e) 
-    {
-      echo "Email could not be sent. Error: {$mail->ErrorInfo}";
+    else {
+      echo "<script> alert('This email is not registered. Please register first.'); </script>";
     }
+  }
+  else {
+    echo "<script> alert('Please create an account or register to subscribe.'); </script>";
   }
 }
 ?>
@@ -113,15 +122,15 @@ if (isset($_POST['send']))
     <div class="contact-icons">
       <div class="contact-item">
         <i style="color:rgba(20, 111, 168, 0.87);" class="fa-regular fa-envelope"> </i>
-        <p class="cont-details"> roamingroutes33@gmail.com </p>
+        <span class="cont-details"> roamingroutes33@gmail.com </span>
       </div>
       <div class="contact-item">
         <i style="color: white;" class="fa-solid fa-mobile-screen-button"></i>
-        <p class="cont-details"> +91 8200214115 </p>
+        <span class="cont-details"> +91 8200214115 </span>
       </div>
       <div class="contact-item">
         <i style="color: lightcoral;" class="fa-solid fa-map-pin"></i>
-        <p class="cont-details"> G-1 Krishna Sadan, Pranami Street, Moti-Chhipwad, Valsad - 396001</p>
+        <span class="cont-details"> G-1 Krishna Sadan, Pranami Street, Moti-Chhipwad, Valsad - 396001</span>
       </div>
     </div>  
   </div>
