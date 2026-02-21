@@ -130,7 +130,7 @@ if (isset($_POST['send']))
       </div>
       <div class="contact-item">
         <i style="color: lightcoral;" class="fa-solid fa-map-pin"></i>
-        <span class="cont-details"> G-1 Krishna Sadan, Pranami Street, Moti-Chhipwad, Valsad - 396001</span>
+        <span class="cont-details">Ahmedabad, Gujarat - 380001</span>
       </div>
     </div>  
   </div>

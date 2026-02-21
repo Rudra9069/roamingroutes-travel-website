@@ -244,7 +244,7 @@ if(isset($_POST['login']))
 
 <body>
     <div class="auth-wrapper">
-        <img class="bg-img" alt="img" src="img/login_2.jpg">
+        <img class="bg-img" alt="img" src="img/login_2.jpg" loading="lazy" decoding="async">
         <div class="card">
             <h1> Login | Sign-In </h1>
             <form onsubmit="return validation()" action="login.php"  method="post">

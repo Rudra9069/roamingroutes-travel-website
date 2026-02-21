@@ -536,8 +536,8 @@ $result =mysqli_query($conn, $query);
         }
 
         .gallery-item {
-            width: 180px;
-            height: 230px;
+            width: 150px !important;
+            height: 200px !important;
         }
 
         .typing-effect {
@@ -853,6 +853,13 @@ $result =mysqli_query($conn, $query);
     margin-right: 0 !important;
     position: relative !important;
     top: 0 !important; /* Reset position */
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        width: 200px !important;
+        height: 280px !important;
+    }
 }
 
 </style>

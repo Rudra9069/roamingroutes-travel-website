@@ -60,8 +60,8 @@
             #navLinks.nav-links {
                 display: flex;
                 align-items: center;
-                background: rgba(183, 183, 183, 0.08);
-                backdrop-filter: blur(10px);
+                background: rgba(0, 0, 0, 0.45);
+                backdrop-filter: blur(5px);
                 -webkit-backdrop-filter: blur(5px);
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 padding: 6px 18px;
@@ -574,8 +574,102 @@
     }
 
 
-        /* Mobile Fixes for iPhone 15 and similar small screens */
+        /* =============================================
+           FLOATING BOTTOM NAV BAR (iPhone Dock Style)
+           ============================================= */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 320px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(16px) saturate(200%);
+            -webkit-backdrop-filter: blur(16px) saturate(200%);
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            border-radius: 50px;
+            z-index: 9999;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 4px;
+        }
+
+        .mobile-bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 1);
+            font-size: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            gap: 4px;
+            padding: 8px 6px;
+            border-radius: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            min-width: 56px;
+        }
+
+        .mobile-bottom-nav .nav-item i {
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-bottom-nav .nav-item span {
+            transition: all 0.3s ease;
+        }
+
+        .mobile-bottom-nav .nav-item:active {
+            transform: scale(0.9);
+        }
+
+        .mobile-bottom-nav .nav-item.active {
+            color: #fff;
+        }
+
+        .mobile-bottom-nav .nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: #d7d7d7ff;
+            border-radius: 2px;
+        }
+
+        /* =============================================
+           MOBILE FOOTER REDESIGN (≤768px)
+           ============================================= */
         @media (max-width: 768px) {
+            /* Show bottom nav on mobile */
+            .mobile-bottom-nav {
+                display: flex;
+            }
+
+            /* Hide hamburger on mobile */
+            .hamburger-v2 {
+                display: none !important;
+            }
+
+            /* Hide top nav links on mobile */
+            #navLinks.nav-links {
+                display: none !important;
+            }
+
+            /* Add body padding for bottom nav */
+            body {
+                padding-bottom: 90px;
+            }
+
+            /* --- Original Footer Mobile Styles --- */
             .last-sec {
                 display: flex !important;
                 flex-direction: column !important;
@@ -603,11 +697,11 @@
             }
 
             .subs {
-                margin-top: 40px !important; /* Move subscribe section further downwards */
+                margin-top: 40px !important;
             }
 
             .sub-p {
-                max-width: 280px !important; /* Forces text to span two lines */
+                max-width: 280px !important;
                 margin: 5px auto !important;
                 line-height: 1.4 !important;
             }
@@ -619,23 +713,23 @@
             }
 
             .brand-col p {
-                margin-top: -10px !important; /* Move the slogan upwards */
+                margin-top: -10px !important;
                 margin-bottom: 10px !important;
             }
 
             .brand-col h4 {
-                margin-top: 25px !important; /* Move 'FOLLOW US' and icons downwards */
+                margin-top: 25px !important;
                 margin-bottom: 5px !important;
             }
 
             .brand-col .icons {
-                margin-top: 10px !important; /* Move icons downwards */
+                margin-top: 10px !important;
             }
 
             .contact-icons {
                 display: block !important;
                 width: 100% !important;
-                padding-left: 10% !important; /* Move away from edge */
+                padding-left: 10% !important;
                 margin: 0 !important;
             }
 
@@ -649,7 +743,7 @@
                 -ms-flex-direction: row !important;
                 flex-wrap: nowrap !important;
                 justify-content: flex-start !important;
-                align-items: flex-start !important; /* Align icon with first line */
+                align-items: flex-start !important;
                 width: 100% !important;
                 gap: 15px !important;
                 margin-bottom: 20px !important;
@@ -660,11 +754,11 @@
                 font-size: 18px !important;
                 text-align: center !important;
                 flex-shrink: 0 !important;
-                margin-top: 4px !important; /* Perfect vertical alignment with text */
+                margin-top: 4px !important;
             }
 
             .cont-details {
-                display: block !important; /* Ensure it stays on its own "cell" */
+                display: block !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 text-align: left !important;
@@ -678,6 +772,7 @@
             .custom-footer {
                 height: auto !important;
                 padding: 15px 0 !important;
+                margin-bottom: 80px !important;
             }
             .custom-footer p {
                 font-size: 14px !important;
@@ -744,9 +839,40 @@
 
 
 
+        <!-- iPhone-style Floating Bottom Nav -->
+        <nav class="mobile-bottom-nav">
+            <a href="index.php" class="nav-item" data-page="index">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="destinations.php" class="nav-item" data-page="destinations">
+                <i class="fa-solid fa-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="aboutus.php" class="nav-item" data-page="aboutus">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>About</span>
+            </a>
+            <a href="contact.php" class="nav-item" data-page="contact">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+            <?php if (isset($_SESSION['u_id'])): ?>
+            <a href="profile.php" class="nav-item" data-page="profile">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <?php else: ?>
+            <a href="login.php" class="nav-item" data-page="login">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Login</span>
+            </a>
+            <?php endif; ?>
+        </nav>
+
         <!-- JavaScripts -->
         <script>
-            // Hamburger menu 
+            // Hamburger menu (kept for desktop compatibility)
             function toggleMenu() {
                 const navLinks = document.getElementById("navLinks");
                 if (navLinks) {
@@ -754,9 +880,7 @@
                 }
             }
 
-
-
-            // Navbar scroll effect - change background on scroll
+            // Navbar scroll effect
             window.addEventListener('scroll', function() {
                 const navbar = document.querySelector('.custom-navbar');
                 if (window.scrollY > 50) {
@@ -765,5 +889,22 @@
                     navbar.classList.remove('scrolled');
                 }
             });
+
+            // Active page detection for bottom nav
+            (function() {
+                const currentPage = window.location.pathname.split('/').pop().replace('.php', '') || 'index';
+                const navItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
+                navItems.forEach(function(item) {
+                    if (item.getAttribute('data-page') === currentPage) {
+                        item.classList.add('active');
+                    }
+                });
+            })();
+
+            // Mobile footer accordion toggle
+            document.addEventListener('DOMContentLoaded', function() {
+                // No additional mobile footer JS needed
+            });
+
 
         </script>

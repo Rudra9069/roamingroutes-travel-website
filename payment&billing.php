@@ -182,7 +182,7 @@ body {
             ?>
                 <div class="billing-card-real">
                     <div class="billing-card-img">
-                        <img src="img/destinations/<?php echo $displayImg; ?>" alt="Destination">
+                        <img src="img/destinations/<?php echo $displayImg; ?>" alt="Destination" loading="lazy" decoding="async">
                     </div>
                     <div class="billing-card-info">
                         <div class="header-row">

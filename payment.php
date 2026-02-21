@@ -371,7 +371,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['payment_id']))
 </style>
 
 <div class="bg-wrapper">
-    <img src="img/destinations/<?php echo $firstImage; ?>" class="bg-image" alt="Background">
+    <img src="img/destinations/<?php echo $firstImage; ?>" class="bg-image" alt="Background" loading="lazy" decoding="async">
 </div>
 
 <div class="main-container">
