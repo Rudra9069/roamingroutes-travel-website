@@ -371,12 +371,12 @@ require 'vendor/autoload.php';
 
 <body>
     <div class="auth-wrapper">
-        <img class="bg-image" src="img/register.jpg" alt="background">
+        <img class="bg-image" src="img/register.jpg" alt="background" loading="lazy" decoding="async">
         
         <div class="main-container">
             <!-- Left Card: Image -->
             <div class="image-section">
-                <img src="img/register.jpg" alt="Register">
+                <img src="img/register.jpg" alt="Register" loading="lazy" decoding="async">
                 <div class="image-overlay">
                     <h2>Join Roaming Routes</h2>
                     <p>Start your journey with us and explore the world's most beautiful destinations.</p>
