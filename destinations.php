@@ -281,7 +281,7 @@ $result = mysqli_query($conn, $query);
     
     <!-- Section1 -->
     <section class="sec1">
-        <img class="dest-img" src="img/dest-img_3.jpg" alt="dest-img">
+        <img class="dest-img" src="img/dest-img_3.jpg" alt="dest-img" loading="lazy" decoding="async">
         <div class="overlay-text"> Explore places on Roaming Routes </div>
     </section>
 
@@ -300,7 +300,7 @@ $result = mysqli_query($conn, $query);
                 ?>
 
                         <div class="cards">
-                            <img src="img/destinations/<?php echo $firstImage; ?>" alt="<?php echo $row['name']; ?>">
+                            <img src="img/destinations/<?php echo $firstImage; ?>" alt="<?php echo $row['name']; ?>" loading="lazy" decoding="async">
                             <h5> <?php echo $row['name']; ?> </h5>
                             <!-- Reviews -->
                             <p class="reviews"> 

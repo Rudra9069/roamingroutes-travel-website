@@ -184,66 +184,146 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     /* section 2 */
     .sec2 {
-        background-color: white;
+        background: #111827;
+        padding: 60px 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .sec2-p {
         position: relative;
-        font-family: 'Popins', sans-serif;
-        font-size: 55px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 36px;
         font-weight: 700;
-        margin-top: 2%;
         text-align: center;
+        color: #ffffff;
+        margin-bottom: 6px;
+    }
+
+    .sec2-p::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: #d2983b;
+        margin: 12px auto 0;
+        border-radius: 2px;
+    }
+
+    .sec2-sub {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-bottom: 45px;
+        margin-top: 28px;
     }
 
     .sec2-d {
-        padding: 10px 0px 50px 0px;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .cards {
         display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin: 20px 35px;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        gap: 50px;
+        margin: 0 auto;
+        max-width: 900px;
+        width: 90%;
     }
 
-    .card1,
-    .card2,
-    .card3 {
+    .card1, .card2, .card3 {
+        flex: 1 1 0;
+        padding: 45px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         position: relative;
-        height: 200px;
-        width: 100%;
-        max-width: 400px;
-        background-color: rgb(40, 40, 40);
-        border-radius: 15px;
-        border: none;
-        box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.33);
-        margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+
+    /* Vertical dividers between items */
+    .card1::after, .card2::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .card1:hover, .card2:hover, .card3:hover {
+        transform: scale(1.05);
+    }
+
+    .c-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        font-size: 22px;
+        position: relative;
+        background: rgba(210, 152, 59, 0.12);
+        color: #d2983b;
+        transition: all 0.3s ease;
+    }
+
+    .c-icon::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 1.5px dashed rgba(210, 152, 59, 0.3);
+        animation: iconSpin 12s linear infinite;
+    }
+
+    @keyframes iconSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .card1:hover .c-icon, .card2:hover .c-icon, .card3:hover .c-icon {
+        background: rgba(210, 152, 59, 0.2);
+        box-shadow: 0 0 18px rgba(210, 152, 59, 0.2);
     }
 
     .cards .cp-h {
-        position: absolute;
-        margin-top: 20px;
-        margin-left: 10%;
-        font-family: 'Poppins';
-        font-size: 25px;
-        font-weight: 700;
-        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
     }
 
+    .cards .cp-h i { display: none; }
+
     .cards .cp {
-        position: absolute;
-        margin-top: -20px;
-        font-family: 'Poppins';
-        font-size: 18px;
-        padding: 10px 25px;
-        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.5;
+        margin-top: 20px;
+        padding: 0;
     }
 
     .cards i {
-        position: absolute;
-        margin-top: 5%;
-        margin-left: 10%;
+        position: static !important;
+        margin: 0 !important;
     }
 
     /* Map */
@@ -257,35 +337,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         overflow: hidden;
     }
 
-    /* Info Cards Internal Realignment */
-    .card1, .card2, .card3 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .cp-h {
-        position: static !important;
-        margin: 0 !important;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .cards .cp {
-        position: static !important;
-        margin: 10px 0 0 0 !important;
-        padding: 0 !important;
-    }
-
-    .cards i {
-        position: static !important;
-        margin: 0 !important;
-    }
-
     iframe {
         width: 100%;
         height: 500px;
@@ -295,11 +346,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     /* Responsiveness Media Queries */
     @media (max-width: 992px) {
         .ch { font-size: 45px; }
-        .cp { font-size: 16px; top: 40%; width: 90%; }
+        .sec2 .cp { font-size: 14px; }
         .card { left: 50%; transform: translateX(-50%); top: 50%; max-height: none; height: auto; padding: 20px; }
         .card input[type="text"], .card input[type="email"], .card input[type="number"], .card textarea, .card .c-em-btn { width: 100%; position: static; margin-top: 15px; }
-        .sec2-p { font-size: 38px; }
-        .card1, .card2, .card3 { width: 100%; max-width: 450px; margin: 10px auto; }
+        .sec2-p { font-size: 30px; }
+        .sec2 .cards { width: 95%; }
         .map-container { width: 95%; margin: 20px auto; }
     }
 
@@ -325,7 +376,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             position: relative; 
             flex-direction: column; 
             background: rgba(0, 0, 0, 0.4); 
-            padding: 80px 20px 40px; 
+            padding: 140px 20px 40px; 
             align-items: center; 
             height: auto; 
             z-index: 2;
@@ -344,8 +395,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             margin-top: 0; 
             width: 100%; 
             color: #efefef; 
-            line-height: 1.6;
+            line-height: 1.8;
         }
+        .cp br { display: none; }
         .card { 
             position: relative; 
             left: auto !important; /* Force reset of desktop offset */
@@ -357,8 +409,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             z-index: 10; 
             padding: 25px;
         }
-        .sec2-p { font-size: 32px; margin-top: 40px; }
-        .cards { justify-content: center; margin: 20px 15px; }
+        .sec2-p { font-size: 26px; }
+        .sec2-sub { margin-top: 16px; margin-bottom: 25px; font-size: 16px; }
+        .sec2 { padding: 30px 15px; }
+        .sec2 .cards { flex-direction: column; align-items: center; gap: 5px; flex-wrap: wrap; width: 100%; }
+        .card1::after, .card2::after { display: none; }
+        .sec2 .card1, .sec2 .card2, .sec2 .card3 { width: 100%; flex: none; padding: 15px 15px; }
+        .sec2 .c-icon { margin-bottom: 15px; }
+        .sec2 .cards .cp-h { margin-top: 12px; margin-bottom: 5px; }
+        .sec2 .cards .cp { margin-top: 8px; }
         .map-container { width: 100%; border-radius: 0; margin-top: 0; }
         iframe { border: none; height: 350px; }
     }
@@ -392,7 +451,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         <!-- Image -->
         <div class="image-container">
-            <img src="img/contus.jpg" alt="Background" class="background-image">
+            <img src="img/contus.jpg" alt="Background" class="background-image" loading="lazy" decoding="async">
 
             <!-- Overlay text -->
             <div class="overlay">
@@ -426,28 +485,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     <!-- Sec-2 -->
     <section class="sec2">
-        <p class="sec2-p"> Get in Touch: </p>
+        <p class="sec2-p">Get in Touch</p>
+        <p class="sec2-sub">We're here to help with your travel plans</p>
         <div class="sec2-d">
             <div class="cards">
                 <div class="card1">
-                    <p class="cp-h"> Contact No <i style="color: lightgreen;" class="fa-solid fa-mobile"></i> </p>
-                    <p class="cp">
-                        +91 8200214115 <br>
-                    </p>
+                    <div class="c-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <p class="cp-h">Contact No</p>
+                    <p class="cp">+91 8200214115</p>
                 </div>
 
                 <div class="card2">
-                    <p class="cp-h"> Location <i style="color: lightcoral;" class="fa-solid fa-location-dot"></i></p>
-                    <p class="cp">
-                        G-1 Krishna Sadan, <br>
-                        Pranami Street Moti Chhipwad, <br>
-                        Valsad - 396001
-                    </p>
+                    <div class="c-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <p class="cp-h">Location</p>
+                    <p class="cp">Ahmedabad, Gujarat - 380001</p>
                 </div>
 
                 <div class="card3">
-                    <p class="cp-h"> Email <i style="color: goldenrod;" class="fa-solid fa-paper-plane"></i> </p>
-                    <p class="cp"> roamingroutes33@gmail.com </p>
+                    <div class="c-icon">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <p class="cp-h">Email</p>
+                    <p class="cp">roamingroutes33@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -456,7 +519,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <!-- section 3 -->
     <div class="map-container">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.934723957472!2d72.92810951481642!3d20.610109386261235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0cdac90a07e1d%3A0x9e8c3fa423fa4cbb!2sValsad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1715327112345!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117176.06498498498!2d72.50991562812502!3d23.020474199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1715327112345!5m2!1sen!2sin"
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">

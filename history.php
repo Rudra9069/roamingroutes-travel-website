@@ -270,7 +270,7 @@ body {
             ?>
                 <div class="history-card-real">
                     <div class="trip-img">
-                        <img src="img/destinations/<?php echo $displayImg; ?>" alt="Trip">
+                        <img src="img/destinations/<?php echo $displayImg; ?>" alt="Trip" loading="lazy" decoding="async">
                     </div>
                     <div class="trip-details">
                         <div class="trip-main">

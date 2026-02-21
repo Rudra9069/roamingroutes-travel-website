@@ -381,7 +381,7 @@ $firstImage = trim($images[0]);
 
 <!-- Hero Section -->
 <section class="hero-section">
-    <img src="img/destinations/<?php echo $firstImage; ?>" class="hero-img" alt="<?php echo $row['name']; ?>">
+    <img src="img/destinations/<?php echo $firstImage; ?>" class="hero-img" alt="<?php echo $row['name']; ?>" loading="lazy" decoding="async">
     <div class="hero-content">
         <h1><?php echo htmlspecialchars($row['country']); ?></h1>
         <p><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($row['city']); ?>, <?php echo htmlspecialchars($row['state']); ?></p>
@@ -399,7 +399,7 @@ $firstImage = trim($images[0]);
         <!-- Image Gallery Slider -->
         <div class="image-gallery">
             <div class="main-slider">
-                <img id="activeImage" src="img/destinations/<?php echo $firstImage; ?>" alt="<?php echo $row['name']; ?>">
+                <img id="activeImage" src="img/destinations/<?php echo $firstImage; ?>" alt="<?php echo $row['name']; ?>" loading="lazy" decoding="async">
             </div>
             <div class="slider-nav">
                 <?php foreach ($images as $index => $img): 
@@ -409,7 +409,8 @@ $firstImage = trim($images[0]);
                     <img src="img/destinations/<?php echo $img; ?>" 
                          class="<?php echo $index === 0 ? 'active' : ''; ?>"
                          onclick="updateMainImage(this.src, this)"
-                         alt="Thumbnail">
+                         alt="Thumbnail"
+                         loading="lazy" decoding="async">
                 <?php endforeach; ?>
             </div>
         </div>
