@@ -271,7 +271,7 @@ body {
             <a href="login.php" class="btn-primary" style="text-decoration: none;">Go to Login</a>
         <?php endif; ?>
 
-        <a href="settings.php" class="back-link"><i class="fas fa-arrow-left"></i> Back to Settings</a>
+        <a href="settings.php" class="back-link"><i class="fas fa-arrow-left"></i> Back to Settings ?</a>
     </div>
 </div>
 
