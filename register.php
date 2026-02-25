@@ -162,9 +162,9 @@ require 'vendor/autoload.php';
         position: relative;
         margin: 80px auto 40px;
         display: flex;
-        min-height: 600px;
+        min-height: 500px;
         width: 100%;
-        max-width: 1000px;
+        max-width: 950px;
         background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -225,7 +225,7 @@ require 'vendor/autoload.php';
     /* Right Form Section */
     .form-section {
         flex: 1;
-        padding: 40px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;

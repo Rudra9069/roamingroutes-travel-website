@@ -126,7 +126,7 @@ if (isset($_POST['send']))
       </div>
       <div class="contact-item">
         <i style="color: white;" class="fa-solid fa-mobile-screen-button"></i>
-        <span class="cont-details"> +91 8200214115 </span>
+        <span class="cont-details"> +91 820021415 </span>
       </div>
       <div class="contact-item">
         <i style="color: lightcoral;" class="fa-solid fa-map-pin"></i>

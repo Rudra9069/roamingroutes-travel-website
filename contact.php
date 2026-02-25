@@ -119,21 +119,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     .card {
         position: absolute;
-        top: 12%;
+        top: 15%;
         left: 65%;
         background-color: white;
         color: black;
         padding: 30px 20px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        min-height: 100%;
+        /* min-height: 100%; */
         max-height: 630px;
         width: 100%;
         max-width: 450px;
         z-index: 10;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .ch2 {
@@ -472,7 +472,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         <input type="text" id="fname" name="fname" placeholder="First Name" required>
                         <input type="text" id="lname" name="lname" placeholder="Last Name" required>
                     </div>
-                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
                     <input type="number" id="email" name="number" placeholder="Contact no." required>
                     <textarea id="message" name="message" rows="5"
                         placeholder="Type your message here..."></textarea>
@@ -494,7 +494,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <p class="cp-h">Contact No</p>
-                    <p class="cp">+91 8200214115</p>
+                    <p class="cp">+91 820021415</p>
                 </div>
 
                 <div class="card2">
