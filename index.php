@@ -505,14 +505,25 @@ $result =mysqli_query($conn, $query);
             margin: 15px 0;
             display: block;
             letter-spacing: 4px;
+            width: 100%;
+        }
+
+        .h1-vid {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .h1_2-vid {
+            text-align: right;
+            padding-right: 20px;
         }
 
         .overlay-video {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: stretch;
+            padding: 10px 30px;
         }
 
         .sec5-video {
@@ -970,49 +981,32 @@ $result =mysqli_query($conn, $query);
 <script>
     (function() {
         var splash=document.getElementById('splash-screen');
-        var referrer=document.referrer;
-        var currentHost=window.location.host;
-        var currentPath=window.location.pathname;
+        var splashShown=sessionStorage.getItem('splashShown');
 
         // Detect if this is a page refresh
         var isReload=false;
-
-        if (window.performance && window.performance.navigation) {
-            isReload=window.performance.navigation.type===1;
-        }
-
-        else if (window.performance && performance.getEntriesByType) {
+        if (window.performance && performance.getEntriesByType) {
             var navEntries=performance.getEntriesByType('navigation');
-
             if (navEntries.length > 0) {
                 isReload=navEntries[0].type==='reload';
             }
+        } else if (window.performance && window.performance.navigation) {
+            isReload=window.performance.navigation.type===1;
         }
 
-        // Get the project base path (e.g., /4_Travel/ or /)
-        var projectBase=currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
-
-        // Detailed internal navigation check
-        // isInternal: Coming from another page within the same project directory
-        var isInternal=referrer && referrer.indexOf(currentHost) !==-1 && referrer.indexOf(projectBase) !==-1;
-
-        // First visit from outside, or direct access, or refresh - show splash
-        if ( !isInternal || isReload) {
+        // First visit of session or page reload - show splash
+        if (!splashShown || isReload) {
             document.documentElement.style.setProperty('--anim-delay', '1.8s');
+            sessionStorage.setItem('splashShown', 'true');
 
             setTimeout(function() {
-                    if (splash) {
-                        splash.classList.add('splash-hidden');
-                    }
+                if (splash) {
+                    splash.classList.add('splash-hidden');
                 }
-
-                , 3000);
-        }
-
-        else {
-            // Internal navigation - hide splash immediately and start animation fast
+            }, 3000);
+        } else {
+            // Already seen splash in this session (internal navigation) - hide immediately
             document.documentElement.style.setProperty('--anim-delay', '0.2s');
-
             if (splash) {
                 splash.classList.add('splash-hidden');
             }
@@ -1149,7 +1143,7 @@ $result =mysqli_query($conn, $query);
 <!-- Section 5 -->
 <section class="sec5">
     <div class="video-wrapper">
-        <video autoplay muted loop class="sec5-video" preload="metadata">
+        <video autoplay muted loop playsinline class="sec5-video" preload="metadata">
             <source src="img/video.mp4" type="video/mp4"></video>
         <div class="overlay-video">
             <h1 class="h1-vid">your journey </h1>

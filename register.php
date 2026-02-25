@@ -325,7 +325,7 @@ require 'vendor/autoload.php';
     .login-link {
         margin-top: 25px;
         text-align: center;
-        font-size: 14px;
+        font-size: 18px;
         color: rgba(255, 255, 255, 0.6);
     }
 
@@ -358,6 +358,7 @@ require 'vendor/autoload.php';
             padding: 30px 20px;
         }
         .form-section h1 { font-size: 28px; margin-bottom: 20px; }
+        .login-link { font-size: 14px; }
     }
 
     @media (max-width: 480px) {

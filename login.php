@@ -184,7 +184,7 @@ if(isset($_POST['login']))
         margin-top: 30px;
         text-align: center;
         color: white;
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .register-link p a {
@@ -231,6 +231,7 @@ if(isset($_POST['login']))
             margin: 80px 15px 40px;
         }
         .card h1 { font-size: 28px; margin-bottom: 25px; }
+        .card .register-link { font-size: 14px; }
     }
 
     @media (max-width: 480px) {
