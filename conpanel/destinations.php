@@ -24,7 +24,7 @@ $destinations = mysqli_query($conn, "SELECT * FROM destinations WHERE is_deleted
     <title>Destinations - Admin Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin.css?v=2.0">
     <link rel="icon" href="../img/icon/Icon.ico">
     <style>
         .dest-image {
