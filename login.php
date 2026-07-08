@@ -250,6 +250,8 @@ if(isset($_POST['login']))
         }
         .card h1 { font-size: 28px; margin-bottom: 25px; }
         .card .register-link { font-size: 14px; }
+        .forgot-link { top: 20px; }
+        .forgot-link a { font-size: 15px; }
     }
 
     @media (max-width: 480px) {
@@ -257,6 +259,8 @@ if(isset($_POST['login']))
         .card { padding: 30px 20px; }
         .card h1 { font-size: 24px; }
         .btn { padding: 12px; }
+        .forgot-link { top: 15px; }
+        .forgot-link a { font-size: 14px; }
     }
 
 </style>
