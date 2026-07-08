@@ -21,3 +21,8 @@ vendor/
 
 # Uploaded files (if dynamic uploads exist)
 uploads/
+
+# Sensitive / test files
+app_password.txt
+razorpay_test.txt
+img/video_full.mp4
