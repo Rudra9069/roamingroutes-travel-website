@@ -1,0 +1,35 @@
+🌍 Travel Management Web Application (Full-Stack Project)
+
+
+I am excited to officially share my latest project, Roaming Routes—a full-stack travel platform designed to make destination discovery as beautiful as the journey itself, developed using PHP, MySQL, and integrated third-party services.
+
+This project allows users to explore destinations, manage bookings, and perform payments, while providing an admin panel to control the entire platform.
+
+🔹 Key Sections:
+• Home: Cinematic landing page with immersive video and quick-search discovery.
+• Destinations: Searchable catalog of global spots with live pricing and traveler ratings.
+• About: Our mission for sustainable travel and exclusive member subscription portal.
+• Contact us: Professional inquiry hub with integrated support form and contact details.
+• Profile: Secure personal dashboard to manage account details and travel history.
+
+🔹 Key Features:
+• User-friendly travel destination browsing interface
+• Admin dashboard to manage users and destinations
+• Secure online payment integration using Razorpay (DEMO)
+• Email notifications using PHPMailer
+• Modular structure with reusable components (header, footer, includes)
+• MySQL database design for efficient data handling
+
+🔹 Tech Stack:
+• Frontend: HTML, CSS, JavaScript
+• Backend: PHP
+• Database: MySQL
+• Payment Gateway: Razorpay API (DEMO)
+• Email Service: PHPMailer
+
+This project helped me strengthen my understanding of full-stack web development, payment gateway integration, database management.
+Project demonstrates practical implementation of authentication, admin control, and dynamic content management in a travel booking platform.
+
+🔗 Live Demo: https://roamingroutes.free.nf
+
+#WebDevelopment #FullStackDevelopment #PHP #MySQL #TravelWebsite #PHPMailer #BackendDevelopment #FrontendDevelopment #WebAppProject #SoftwareDevelopment #MCAProject #StudentDeveloper
