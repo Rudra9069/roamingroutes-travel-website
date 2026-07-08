@@ -204,10 +204,10 @@ if(isset($_POST['login']))
     }
 
     .forgot-link a {
-        color: #37aed6ff;
+        color: #0fb7d8ff;
         font-size: 18px;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 800;
         transition: all 0.3s ease;
     }
 
@@ -260,7 +260,7 @@ if(isset($_POST['login']))
         .card h1 { font-size: 24px; }
         .btn { padding: 12px; }
         .forgot-link { top: 15px; }
-        .forgot-link a { font-size: 14px; }
+        .forgot-link a { font-size: 16px; }
     }
 
 </style>
