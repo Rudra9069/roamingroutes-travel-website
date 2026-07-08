@@ -175,8 +175,8 @@ if(isset($_POST['login']))
     }
 
     .card .btn:hover {
-        background-color: #000;
-        color: #fff;
+        background-color: #05680fff;
+        color: #ffffff;
         transform: translateY(-2px);
     }
 
@@ -194,6 +194,24 @@ if(isset($_POST['login']))
     }
 
     .register-link p a:hover {
+        text-decoration: underline;
+    }
+
+    .forgot-link {
+        position: relative;
+        top: 25px;
+        text-align: center;
+    }
+
+    .forgot-link a {
+        color: #37aed6ff;
+        font-size: 18px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .forgot-link a:hover {
         text-decoration: underline;
     }
 
@@ -260,6 +278,9 @@ if(isset($_POST['login']))
                 <button type="submit" class="btn" value="submit" name="login"> Login </button>
                 <div class="register-link">
                     <p> Don't have an account? <a href="register.php"> Register here </a> </p>
+                </div>
+                <div class="forgot-link">
+                    <a href="forgot_password.php">Forgot Password?</a>
                 </div>
             </form>
         </div>
