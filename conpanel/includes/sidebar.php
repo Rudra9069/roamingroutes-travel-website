@@ -1,3 +1,9 @@
+<!-- Mobile Sidebar Toggle -->
+<button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('active'); document.querySelector('.mobile-overlay').classList.toggle('active');">
+    <i class="fas fa-bars"></i>
+</button>
+<div class="mobile-overlay" onclick="document.querySelector('.sidebar').classList.remove('active'); this.classList.remove('active');"></div>
+
 <div class="sidebar">
     <div class="sidebar-logo">
         <img src="../img/logo/rr_logo_white.png" alt="Roaming Routes">

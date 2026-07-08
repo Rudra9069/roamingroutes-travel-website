@@ -639,14 +639,66 @@ select.form-control {
     margin-top: 25px;
 }
 
+/* Mobile Sidebar Styles */
+.mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: linear-gradient(90deg, var(--accent) 0%, #d4b06a 100%);
+    color: var(--primary-dark);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover {
+    transform: translateY(-2px);
+}
+
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    z-index: 99;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
+    .mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .sidebar {
         transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .mobile-overlay.active {
+        display: block;
     }
 
     .main-content {
         margin-left: 0;
+        padding-top: 80px; /* Space for the toggle button */
+    }
+    
+    .page-header {
+        padding-right: 50px;
     }
 }
 
